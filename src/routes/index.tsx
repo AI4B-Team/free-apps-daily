@@ -1,26 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import FreeAppsDaily from "@/components/FreeAppsDaily";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Free Apps Daily — New AI App Drops Every Morning" },
+      { name: "description", content: "Claim free access to premium AI apps every day. Curated drops, resets at midnight." },
+      { property: "og:title", content: "Free Apps Daily" },
+      { property: "og:description", content: "New free AI app drops every morning. Claim before midnight." },
+    ],
+  }),
+  component: FreeAppsDaily,
 });
-
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
-}
