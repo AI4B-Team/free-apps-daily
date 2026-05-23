@@ -387,8 +387,11 @@ export default function FreeAppsDaily() {
           </div>
           <h3 className="text-xl font-bold mb-2 text-white">Every Free App. Every Morning.</h3>
           <p className="text-sm text-neutral-400 mb-6 max-w-md mx-auto leading-relaxed">
-            Curated by the team behind Zombie House Flipping, Inc. 500 & AIforBusiness.com — 47,218 subscribers and counting.
+            Curated By The AI For Business Team
+            <br />
+            47,218 Subscribers & Counting
           </p>
+
           <div className="flex gap-3 max-w-sm mx-auto">
             <input
               type="email"
