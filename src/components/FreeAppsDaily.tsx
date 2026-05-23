@@ -250,7 +250,7 @@ export default function FreeAppsDaily() {
                     <Clock size={11} /> Offer Expires In
                   </p>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    {[["Hrs", time.h], ["Min", time.m], ["Sec", time.s]].map(([lbl, val]) => (
+                    {([["Hrs", time.h], ["Min", time.m], ["Sec", time.s]] as const).map(([lbl, val]) => (
                       <div key={lbl} className="bg-neutral-50 border border-neutral-200 rounded-lg py-2.5 text-center">
                         <span className="block text-xl font-bold text-red-600">{pad(val)}</span>
                         <span className="text-xs text-neutral-400 uppercase tracking-wider">{lbl}</span>
