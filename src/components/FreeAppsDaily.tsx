@@ -69,23 +69,25 @@ const APPS = [
   },
 ];
 
-const pad = n => String(n).padStart(2, "0");
+type App = (typeof APPS)[number];
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function FreeAppsDaily() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery]           = useState("");
   const [activeCat, setActiveCat]   = useState("All");
-  const [modalApp, setModalApp]     = useState(null);
+  const [modalApp, setModalApp]     = useState<App | null>(null);
   const [email, setEmail]           = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [unlocked, setUnlocked]     = useState([]);
+  const [unlocked, setUnlocked]     = useState<number[]>([]);
   const [nlEmail, setNlEmail]       = useState("");
   const [time, setTime]             = useState({ h: 11, m: 42, s: 8 });
 
   useEffect(() => {
     const id = setInterval(() => {
       setTime(prev => {
-        let { h, m, s } = prev;
+        const { h, m, s } = prev;
         if (s > 0) return { h, m, s: s - 1 };
         if (m > 0) return { h, m: m - 1, s: 59 };
         if (h > 0) return { h: h - 1, m: 59, s: 59 };
@@ -106,7 +108,7 @@ export default function FreeAppsDaily() {
   const featured = filtered.find(a => a.featured);
   const rest      = filtered.filter(a => !a.featured);
 
-  function openModal(app) {
+  function openModal(app: App) {
     setModalApp(app);
     setEmail("");
     setEmailError(false);
@@ -114,11 +116,13 @@ export default function FreeAppsDaily() {
 
   function claim() {
     if (!email || !email.includes("@")) { setEmailError(true); return; }
+    if (!modalApp) return;
     setUnlocked(prev => [...prev, modalApp.id]);
     setModalApp(null);
   }
 
-  const isUnlocked = id => unlocked.includes(id);
+  const isUnlocked = (id: number) => unlocked.includes(id);
+
 
   return (
     <div className="min-h-screen bg-white text-neutral-900" style={{ fontFamily: "'Inter', sans-serif" }}>
