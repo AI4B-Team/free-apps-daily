@@ -47,36 +47,85 @@ const CUSTOMIZATION = [
   { icon: Mail,    title: "Branded Emails" },
 ];
 
-function MockBrowser({ accent }: { accent: string }) {
+function MockBrowser({ app, textSolid, bgSolid }: { app: InstantApp; textSolid: string; bgSolid: string }) {
+  const Icon = app.icon;
+  const navItems = ["Dashboard", "Customers", "Campaigns", "Analytics", "Billing", "Settings"];
+  const stats = app.metrics.slice(0, 3);
+  const rows = [
+    { name: "Acme Studio",   plan: "Pro",        status: "Active",  amount: "$2,400" },
+    { name: "Northwind Co.", plan: "Enterprise", status: "Active",  amount: "$8,900" },
+    { name: "Globex LLC",    plan: "Starter",    status: "Trial",   amount: "$0" },
+    { name: "Initech",       plan: "Pro",        status: "Active",  amount: "$2,400" },
+  ];
   return (
-    <div className="rounded-2xl overflow-hidden border border-white/10 bg-neutral-950 shadow-2xl shadow-black/50">
-      <div className="flex items-center gap-1.5 px-4 py-3 bg-neutral-900 border-b border-white/5">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-        <span className="ml-3 text-[11px] text-neutral-500 font-mono">yourbrand.com</span>
+    <div className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-2xl shadow-neutral-900/10">
+      <div className="flex items-center gap-1.5 px-4 py-3 bg-neutral-100 border-b border-neutral-200">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+        <span className="ml-3 text-[11px] text-neutral-500 font-mono">app.yourbrand.com</span>
       </div>
-      <div className={`aspect-[16/10] bg-gradient-to-br ${accent} relative`}>
-        <div className="absolute inset-0 bg-neutral-950/70" />
-        <div className="absolute inset-0 p-6 grid grid-cols-12 gap-3">
-          <div className="col-span-3 space-y-2">
-            <div className="h-6 bg-white/10 rounded" />
-            <div className="h-3 bg-white/10 rounded w-3/4" />
-            <div className="h-3 bg-white/10 rounded w-2/3" />
-            <div className="h-3 bg-white/10 rounded w-3/4" />
-            <div className="h-3 bg-white/10 rounded w-1/2" />
+      <div className="grid grid-cols-12 min-h-[420px]">
+        {/* Sidebar */}
+        <aside className="col-span-3 bg-neutral-50 border-r border-neutral-200 p-4 space-y-1">
+          <div className="flex items-center gap-2 px-2 py-3 mb-2">
+            <div className={`w-7 h-7 rounded-lg ${bgSolid} flex items-center justify-center`}>
+              <Icon size={14} className="text-white" />
+            </div>
+            <div className="text-sm font-bold text-neutral-900 truncate">{app.name}</div>
           </div>
-          <div className="col-span-9 space-y-3">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="h-16 bg-white/10 rounded-lg" />
-              <div className="h-16 bg-white/10 rounded-lg" />
-              <div className="h-16 bg-white/10 rounded-lg" />
+          {navItems.map((n, i) => (
+            <div key={n} className={`text-[11px] px-2 py-1.5 rounded-md ${i === 0 ? "bg-neutral-900 text-white font-semibold" : "text-neutral-600"}`}>
+              {n}
             </div>
-            <div className="h-32 bg-white/10 rounded-lg" />
-            <div className="grid grid-cols-2 gap-3">
-              <div className="h-20 bg-white/10 rounded-lg" />
-              <div className="h-20 bg-white/10 rounded-lg" />
+          ))}
+        </aside>
+        {/* Main */}
+        <div className="col-span-9 p-5 space-y-4 bg-white">
+          <div className="flex items-center justify-between">
+            <div className="text-sm font-bold text-neutral-900">Dashboard</div>
+            <div className={`text-[10px] font-bold ${bgSolid} text-white px-2 py-1 rounded`}>+ New Campaign</div>
+          </div>
+          {/* Stat cards */}
+          <div className="grid grid-cols-3 gap-3">
+            {stats.map((s, i) => (
+              <div key={i} className="border border-neutral-200 rounded-lg p-3">
+                <div className="text-[10px] text-neutral-500 font-medium uppercase tracking-wider">{s.label}</div>
+                <div className={`text-lg font-black mt-1 ${textSolid}`}>{s.value}</div>
+                <div className="text-[9px] text-emerald-600 font-semibold mt-0.5">↑ 12.4% this month</div>
+              </div>
+            ))}
+          </div>
+          {/* Chart */}
+          <div className="border border-neutral-200 rounded-lg p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-[11px] font-semibold text-neutral-700">Revenue · last 30 days</div>
+              <div className="text-[10px] text-neutral-400">MRR</div>
             </div>
+            <div className="h-20 flex items-end gap-1">
+              {[40, 55, 48, 62, 70, 58, 75, 82, 68, 88, 92, 80, 95, 100, 88].map((h, i) => (
+                <div key={i} className={`flex-1 rounded-sm ${bgSolid} opacity-${i % 3 === 0 ? "90" : "70"}`} style={{ height: `${h}%` }} />
+              ))}
+            </div>
+          </div>
+          {/* Table */}
+          <div className="border border-neutral-200 rounded-lg overflow-hidden">
+            <div className="grid grid-cols-12 px-3 py-2 bg-neutral-50 text-[10px] font-bold text-neutral-500 uppercase tracking-wider">
+              <div className="col-span-5">Customer</div>
+              <div className="col-span-3">Plan</div>
+              <div className="col-span-2">Status</div>
+              <div className="col-span-2 text-right">MRR</div>
+            </div>
+            {rows.map((r, i) => (
+              <div key={i} className="grid grid-cols-12 px-3 py-2 text-[11px] border-t border-neutral-100">
+                <div className="col-span-5 text-neutral-900 font-medium">{r.name}</div>
+                <div className="col-span-3 text-neutral-600">{r.plan}</div>
+                <div className="col-span-2">
+                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${r.status === "Trial" ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`}>{r.status}</span>
+                </div>
+                <div className="col-span-2 text-right font-semibold text-neutral-900">{r.amount}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -84,19 +133,49 @@ function MockBrowser({ accent }: { accent: string }) {
   );
 }
 
-function MockPhone({ accent }: { accent: string }) {
+function MockPhone({ app, bgSolid, textSolid }: { app: InstantApp; bgSolid: string; textSolid: string }) {
+  const Icon = app.icon;
+  const items = app.hero.bullets.slice(0, 3);
   return (
-    <div className="mx-auto w-[200px] rounded-[2rem] border border-white/10 bg-neutral-950 p-2 shadow-2xl shadow-black/50">
-      <div className={`aspect-[9/19] rounded-[1.5rem] bg-gradient-to-br ${accent} relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-neutral-950/75" />
-        <div className="absolute inset-0 p-4 space-y-3">
-          <div className="h-6 bg-white/10 rounded" />
-          <div className="h-24 bg-white/10 rounded-lg" />
-          <div className="space-y-2">
-            <div className="h-10 bg-white/10 rounded-lg" />
-            <div className="h-10 bg-white/10 rounded-lg" />
-            <div className="h-10 bg-white/10 rounded-lg" />
+    <div className="mx-auto w-[210px] rounded-[2rem] border-[10px] border-neutral-900 bg-neutral-900 shadow-2xl shadow-neutral-900/30">
+      <div className="aspect-[9/19] rounded-[1.25rem] bg-white relative overflow-hidden">
+        {/* status bar */}
+        <div className="flex items-center justify-between px-4 pt-2 pb-1 text-[9px] text-neutral-900 font-semibold">
+          <span>9:41</span>
+          <span>●●●●</span>
+        </div>
+        {/* header */}
+        <div className="px-4 py-2 flex items-center gap-2 border-b border-neutral-100">
+          <div className={`w-7 h-7 rounded-lg ${bgSolid} flex items-center justify-center`}>
+            <Icon size={14} className="text-white" />
           </div>
+          <div className="text-[11px] font-bold text-neutral-900 truncate">{app.name}</div>
+        </div>
+        {/* hero card */}
+        <div className="m-3 rounded-xl bg-neutral-50 border border-neutral-200 p-3">
+          <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider">Today</div>
+          <div className={`text-xl font-black mt-1 ${textSolid}`}>{app.metrics[0]?.value ?? "$12.4K"}</div>
+          <div className="text-[9px] text-neutral-500">{app.metrics[0]?.label ?? "Revenue"}</div>
+          <div className="mt-2 flex items-end gap-0.5 h-8">
+            {[40, 60, 50, 75, 65, 88, 95].map((h, i) => (
+              <div key={i} className={`flex-1 rounded-sm ${bgSolid} opacity-80`} style={{ height: `${h}%` }} />
+            ))}
+          </div>
+        </div>
+        {/* list */}
+        <div className="px-3 space-y-2">
+          {items.map((b, i) => (
+            <div key={i} className="flex items-start gap-2 p-2 rounded-lg border border-neutral-100">
+              <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${bgSolid}`} />
+              <div className="text-[10px] text-neutral-700 leading-tight line-clamp-2">{b}</div>
+            </div>
+          ))}
+        </div>
+        {/* tab bar */}
+        <div className="absolute bottom-0 inset-x-0 border-t border-neutral-100 bg-white flex items-center justify-around py-2">
+          {[Sparkles, Users, LayoutDashboard, UserCircle].map((I, i) => (
+            <I key={i} size={12} className={i === 0 ? textSolid : "text-neutral-400"} />
+          ))}
         </div>
       </div>
     </div>
@@ -198,47 +277,101 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
 
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-8">
-              <MockBrowser accent={app.accent} />
+              <MockBrowser app={app} textSolid={textSolid} bgSolid={bgSolid} />
               <p className="mt-3 text-xs text-neutral-500 text-center">Admin dashboard · your branding, your domain</p>
             </div>
             <div className="col-span-12 lg:col-span-4 space-y-6">
-              <MockPhone accent={app.accent} />
+              <MockPhone app={app} bgSolid={bgSolid} textSolid={textSolid} />
               <p className="text-xs text-neutral-500 text-center -mt-3">Native mobile experience</p>
             </div>
+            {/* Onboarding Flow */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
-                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-2">Onboarding Flow</div>
-                <div className="space-y-2 mt-4">
-                  {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[10px] font-bold">{i}</div>
-                      <div className="h-2 bg-neutral-200 rounded flex-1" />
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
+                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Onboarding Flow</div>
+                <div className="space-y-3">
+                  {[
+                    { t: "Create account",     d: "SSO, email, or magic link" },
+                    { t: "Connect domain",     d: "DNS in one click" },
+                    { t: "Upload branding",    d: "Logo, colors, typography" },
+                    { t: "Invite your team",   d: "Roles & permissions" },
+                  ].map((s, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className={`w-6 h-6 rounded-full ${i === 0 ? bgSolid + " text-white" : "bg-neutral-100 text-neutral-500"} flex items-center justify-center text-[10px] font-bold shrink-0`}>
+                        {i === 0 ? <Check size={12} /> : i + 1}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-[12px] font-semibold text-neutral-900">{s.t}</div>
+                        <div className="text-[10px] text-neutral-500">{s.d}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
+                <div className="mt-4 pt-3 border-t border-neutral-100">
+                  <div className="flex items-center justify-between text-[10px] text-neutral-500">
+                    <span>Setup progress</span>
+                    <span className="font-semibold text-neutral-900">25%</span>
+                  </div>
+                  <div className="mt-1.5 h-1 rounded-full bg-neutral-100 overflow-hidden">
+                    <div className={`h-full w-1/4 ${bgSolid}`} />
+                  </div>
+                </div>
               </div>
             </div>
+            {/* Branding Customization */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Branding Customization</div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-200" />
-                  <div className="h-2 flex-1 bg-neutral-200 rounded" />
+                <div className="rounded-lg border border-neutral-200 p-3 mb-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-1">Brand Logo</div>
+                  <div className="flex items-center gap-2">
+                    <div className={`w-9 h-9 rounded-lg ${bgSolid} flex items-center justify-center`}>
+                      <Icon size={16} className="text-white" />
+                    </div>
+                    <div className="text-[11px] font-semibold text-neutral-900 truncate">{app.name}</div>
+                  </div>
                 </div>
-                <div className="flex gap-2 mt-4">
-                  {["bg-red-500","bg-indigo-500","bg-emerald-500","bg-amber-500","bg-fuchsia-500"].map(c => (
-                    <div key={c} className={`w-6 h-6 rounded-full ${c}`} />
-                  ))}
+                <div className="rounded-lg border border-neutral-200 p-3 mb-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-2">Primary Color</div>
+                  <div className="flex gap-1.5">
+                    {app.palette.map(c => (
+                      <div key={c} className={`w-6 h-6 rounded-full ${c} ring-2 ring-white shadow-sm`} />
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-2">Domain</div>
+                  <div className="font-mono text-[10px] text-neutral-700">app.<span className="text-neutral-900 font-bold">yourbrand</span>.com</div>
                 </div>
               </div>
             </div>
+            {/* Client-Facing Portal */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Client-Facing Portal</div>
-                <div className="space-y-2">
-                  <div className="h-3 bg-neutral-200 rounded w-3/4" />
-                  <div className="h-3 bg-neutral-200 rounded w-1/2" />
-                  <div className="h-16 bg-white rounded-lg mt-3 border border-neutral-200" />
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-neutral-200 flex items-center justify-center text-[10px] font-bold text-neutral-600">JD</div>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-semibold text-neutral-900 truncate">Jane Doe</div>
+                    <div className="text-[9px] text-neutral-500">Pro plan · since Jan 2025</div>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3 mb-2">
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-neutral-500">Next invoice</span>
+                    <span className="font-semibold text-neutral-900">$249.00</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] mt-1">
+                    <span className="text-neutral-500">Renews</span>
+                    <span className="font-semibold text-neutral-900">Jun 12</span>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3 space-y-1.5">
+                  {["Download invoice", "Manage subscription", "Contact support"].map(l => (
+                    <div key={l} className="flex items-center justify-between text-[10px] text-neutral-700">
+                      <span>{l}</span>
+                      <ArrowRight size={10} className="text-neutral-400" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
