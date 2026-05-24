@@ -80,18 +80,54 @@ const TRUST_LOGOS = [
 ];
 
 const APPS = [
-  { id: 1,  name: "Descript Pro",    cat: "Video",        emoji: "🎬", offer: "14-Day Pro Free",    value: 24,  claimed: 847,  featured: true,  ourPick: false, desc: "AI video editor — remove filler words, clone your voice, and publish everywhere in one click." },
-  { id: 2,  name: "Real Elite",      cat: "Real Estate",  emoji: "🏠", offer: "Free Trial",          value: 97,  claimed: 312,  featured: false, ourPick: true,  desc: "AI-powered investor CRM — auto-score leads, analyze deals, and submit bulk offers from one dashboard." },
-  { id: 3,  name: "REVVEN",          cat: "Content",      emoji: "⚡", offer: "Free Access",          value: 79,  claimed: 198,  featured: false, ourPick: true,  desc: "Create content, automate your brand, and monetize — the AI business suite built for entrepreneurs." },
-  { id: 4,  name: "Copy.ai",         cat: "Content",      emoji: "✍️", offer: "7-Day Pro Free",       value: 49,  claimed: 521,  featured: false, ourPick: false, desc: "Generate sales copy, email sequences, and social content in seconds with 90+ templates." },
-  { id: 5,  name: "Gamma.app",       cat: "Productivity", emoji: "📊", offer: "Free Starter",         value: 15,  claimed: 634,  featured: false, ourPick: false, desc: "AI-generated presentations and documents — build a full deck in under 60 seconds." },
-  { id: 6,  name: "Perplexity Pro",  cat: "Productivity", emoji: "🧠", offer: "1-Month Pro Free",     value: 20,  claimed: 1203, featured: false, ourPick: false, desc: "AI-powered research engine with real-time web search, citations, and deep document analysis." },
-  { id: 7,  name: "Instantly.ai",    cat: "Sales",        emoji: "📧", offer: "Free Trial",           value: 37,  claimed: 289,  featured: false, ourPick: false, desc: "Cold email platform with AI warmup, sequence builder, and inbox rotation at scale." },
-  { id: 8,  name: "ElevenLabs",      cat: "Content",      emoji: "🎙️", offer: "Free Tier Unlocked",   value: 22,  claimed: 472,  featured: false, ourPick: false, desc: "Hyper-realistic AI voice cloning and text-to-speech in 29 languages." },
-  { id: 9,  name: "Midjourney Lite", cat: "Content",      emoji: "🎨", offer: "200 Free Images",      value: 10,  claimed: 918,  featured: false, ourPick: false, desc: "The world's leading AI image generator — cinematic, photorealistic, and endlessly creative." },
-  { id: 10, name: "Otter.ai Pro",    cat: "Productivity", emoji: "📝", offer: "30-Day Pro Free",      value: 17,  claimed: 341,  featured: false, ourPick: false, desc: "AI meeting transcription, auto-summaries, and action items delivered instantly after every call." },
-  { id: 11, name: "Zapier AI",       cat: "Productivity", emoji: "🔗", offer: "Free Zaps Pack",       value: 29,  claimed: 567,  featured: false, ourPick: false, desc: "Automate 6,000+ apps with AI-built workflows — no code, no developers, no limits." },
-  { id: 12, name: "HomesDaily",      cat: "Real Estate",  emoji: "🏡", offer: "Buyer Access Free",    value: 0,   claimed: 144,  featured: false, ourPick: true,  desc: "AI-powered real estate marketplace — find off-market deals, motivated sellers, and distressed properties." },
+  { id: 1,  name: "Descript Pro",    cat: "Video",        emoji: "🎬", offer: "14-Day Pro Free",    value: 24,  claimed: 847,  featured: true,  ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],   desc: "AI video editor — remove filler words, clone your voice, and publish everywhere in one click." },
+  { id: 2,  name: "Real Elite",      cat: "Real Estate",  emoji: "🏠", offer: "Free Trial",          value: 97,  claimed: 312,  featured: false, ourPick: true,  badges: ["FREE TODAY", "WHITE LABEL", "RESELLABLE"] as BadgeKind[], desc: "AI-powered investor CRM — auto-score leads, analyze deals, and submit bulk offers from one dashboard." },
+  { id: 3,  name: "REVVEN",          cat: "Content",      emoji: "⚡", offer: "Free Access",          value: 79,  claimed: 198,  featured: false, ourPick: true,  badges: ["FREE TODAY", "WHITE LABEL", "RESELLABLE"] as BadgeKind[], desc: "Create content, automate your brand, and monetize — the AI business suite built for entrepreneurs." },
+  { id: 4,  name: "Copy.ai",         cat: "Content",      emoji: "✍️", offer: "7-Day Pro Free",       value: 49,  claimed: 521,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "Generate sales copy, email sequences, and social content in seconds with 90+ templates." },
+  { id: 5,  name: "Gamma.app",       cat: "Productivity", emoji: "📊", offer: "Free Starter",         value: 15,  claimed: 634,  featured: false, ourPick: false, badges: ["FREE TODAY", "NEW"] as BadgeKind[],         desc: "AI-generated presentations and documents — build a full deck in under 60 seconds." },
+  { id: 6,  name: "Perplexity Pro",  cat: "Productivity", emoji: "🧠", offer: "1-Month Pro Free",     value: 20,  claimed: 1203, featured: false, ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],  desc: "AI-powered research engine with real-time web search, citations, and deep document analysis." },
+  { id: 7,  name: "Instantly.ai",    cat: "Sales",        emoji: "📧", offer: "Free Trial",           value: 37,  claimed: 289,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "Cold email platform with AI warmup, sequence builder, and inbox rotation at scale." },
+  { id: 8,  name: "ElevenLabs",      cat: "Content",      emoji: "🎙️", offer: "Free Tier Unlocked",   value: 22,  claimed: 472,  featured: false, ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],  desc: "Hyper-realistic AI voice cloning and text-to-speech in 29 languages." },
+  { id: 9,  name: "Midjourney Lite", cat: "Content",      emoji: "🎨", offer: "200 Free Images",      value: 10,  claimed: 918,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "The world's leading AI image generator — cinematic, photorealistic, and endlessly creative." },
+  { id: 10, name: "Otter.ai Pro",    cat: "Productivity", emoji: "📝", offer: "30-Day Pro Free",      value: 17,  claimed: 341,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "AI meeting transcription, auto-summaries, and action items delivered instantly after every call." },
+  { id: 11, name: "Zapier AI",       cat: "Productivity", emoji: "🔗", offer: "Free Zaps Pack",       value: 29,  claimed: 567,  featured: false, ourPick: false, badges: ["FREE TODAY", "NEW"] as BadgeKind[],         desc: "Automate 6,000+ apps with AI-built workflows — no code, no developers, no limits." },
+  { id: 12, name: "HomesDaily",      cat: "Real Estate",  emoji: "🏡", offer: "Buyer Access Free",    value: 0,   claimed: 144,  featured: false, ourPick: true,  badges: ["FREE TODAY", "RESELLABLE", "STAFF PICK"] as BadgeKind[],  desc: "AI-powered real estate marketplace — find off-market deals, motivated sellers, and distressed properties." },
+];
+
+const OWNED_APPS = [
+  {
+    name: "REVVEN",
+    tagline: "Your AI Content Empire — White Labeled",
+    emoji: "⚡",
+    desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
+    badges: ["OWNED", "WHITE LABEL", "RESELLABLE"] as BadgeKind[],
+    price: "From $2,997 one-time",
+    margin: "Keep 100% of revenue",
+    accent: "from-red-500 to-orange-500",
+    icon: Sparkles,
+  },
+  {
+    name: "Real Elite",
+    tagline: "Sell Your Own AI CRM to Real Estate Investors",
+    emoji: "🏠",
+    desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
+    badges: ["OWNED", "WHITE LABEL", "RESELLABLE"] as BadgeKind[],
+    price: "From $4,997 one-time",
+    margin: "Avg reseller MRR: $18K",
+    accent: "from-indigo-500 to-purple-600",
+    icon: Layers,
+  },
+  {
+    name: "HomesDaily",
+    tagline: "Your Own AI Real Estate Marketplace",
+    emoji: "🏡",
+    desc: "Launch a fully-branded off-market property platform. AI matches buyers to deals, you collect the listing fees and lead-gen revenue.",
+    badges: ["OWNED", "RESELLABLE", "STAFF PICK"] as BadgeKind[],
+    price: "From $3,497 one-time",
+    margin: "$50–$500 per lead",
+    accent: "from-emerald-500 to-teal-500",
+    icon: Rocket,
+  },
 ];
 
 type App = (typeof APPS)[number];
