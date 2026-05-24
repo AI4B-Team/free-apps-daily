@@ -250,19 +250,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
             ))}
           </p>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
-            {app.opportunity.points.map((p, idx) => {
-              const Icons = [Crown, Users, Briefcase, Globe, CreditCard];
-              const I = Icons[idx % Icons.length];
-              return (
-                <div key={p} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center flex flex-col items-center gap-3">
-                  <div className={`w-11 h-11 rounded-xl ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center shadow-md`}>
-                    <I size={18} className="text-white" />
-                  </div>
-                  <span className="text-xs font-bold tracking-widest uppercase text-neutral-200 leading-snug">{p}</span>
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+            {app.opportunity.points.map((p, idx) => (
+              <div key={p} className="bg-neutral-950 p-6 flex flex-col gap-4 text-left">
+                <div className={`text-xs font-mono font-bold ${textSolid}`}>
+                  {String(idx + 1).padStart(2, "0")}
                 </div>
-              );
-            })}
+                <span className="text-sm font-semibold text-neutral-200 leading-snug">{p}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
