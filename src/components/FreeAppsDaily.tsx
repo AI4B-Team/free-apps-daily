@@ -2,8 +2,37 @@ import { useState, useEffect, useRef } from "react";
 import {
   Search, X, Lock, Unlock, Check, Flame, Star,
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
-  Filter, ChevronDown, TrendingUp, Users, Gift
+  Filter, ChevronDown, TrendingUp, Users, Gift,
+  Rocket, Sparkles, Layers, DollarSign, Shield
 } from "lucide-react";
+
+type BadgeKind = "FREE TODAY" | "STAFF PICK" | "WHITE LABEL" | "RESELLABLE" | "NEW" | "OWNED";
+
+const BADGE_STYLES: Record<BadgeKind, string> = {
+  "FREE TODAY":  "bg-red-50 text-red-600 border-red-200",
+  "STAFF PICK":  "bg-amber-50 text-amber-700 border-amber-200",
+  "WHITE LABEL": "bg-indigo-50 text-indigo-700 border-indigo-200",
+  "RESELLABLE":  "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "NEW":         "bg-sky-50 text-sky-700 border-sky-200",
+  "OWNED":       "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+};
+
+function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) {
+  const darkMap: Record<BadgeKind, string> = {
+    "FREE TODAY":  "bg-red-500/15 text-red-300 border-red-500/30",
+    "STAFF PICK":  "bg-amber-500/15 text-amber-300 border-amber-500/30",
+    "WHITE LABEL": "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
+    "RESELLABLE":  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+    "NEW":         "bg-sky-500/15 text-sky-300 border-sky-500/30",
+    "OWNED":       "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30",
+  };
+  const cls = dark ? darkMap[kind] : BADGE_STYLES[kind];
+  return (
+    <span className={`text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border ${cls}`}>
+      {kind}
+    </span>
+  );
+}
 import heroWoman from "@/assets/hero-woman.png";
 
 const INDUSTRIES = [
