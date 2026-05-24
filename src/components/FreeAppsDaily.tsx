@@ -312,6 +312,11 @@ export default function FreeAppsDaily() {
                 </div>
               </div>
 
+              {/* Floating: 47K Subscribers — top right */}
+              <div className="absolute top-2 right-0 z-20 bg-white border border-neutral-200 rounded-2xl px-4 py-3 shadow-xl">
+                <div className="text-lg font-black text-red-600 leading-none">47K+</div>
+                <div className="text-[11px] text-neutral-500 font-semibold mt-1">Subscribers</div>
+              </div>
 
               {/* Floating: Descript Pro — mid right */}
               <div className="absolute top-1/2 -right-2 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
@@ -407,9 +412,8 @@ export default function FreeAppsDaily() {
         </div>
       </section>
 
-      {/* ── Trust / Logo Bar (search bar floats on this top border) ── */}
-      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8">
-
+      {/* ── Trust / Logo Bar ── */}
+      <div className="border-b border-neutral-100 bg-white pt-20 pb-10 px-8 overflow-hidden">
         <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
           {TRUST_LOGOS.map(logo => (
             <img
