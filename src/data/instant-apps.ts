@@ -12,6 +12,8 @@ export type InstantApp = {
   price: string;
   ownership: string;
   accent: string;
+  /** 5-color icon palette unique to this app */
+  palette: string[];
   icon: LucideIcon;
   // Landing page extras
   headline: string;
