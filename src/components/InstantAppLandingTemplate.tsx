@@ -113,6 +113,13 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
   const Icon = app.icon;
   const { bg: bgSolid, text: textSolid } = SOLID_MAP[app.accent] ?? { bg: "bg-neutral-900", text: "text-neutral-900" };
 
+  // Split a sub-headline into two lines: main sentence on line 1, the rest on line 2.
+  const splitTwoLines = (text: string) => {
+    const m = text.match(/^(.+?[.!?])\s+(.+)$/);
+    if (!m) return [text];
+    return [m[1], m[2]];
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
 
