@@ -117,7 +117,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           </Link>
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline text-xs text-neutral-500">{app.hero.eyebrow}</span>
-            <a href="#cta" className="bg-white text-neutral-950 text-xs font-bold px-4 py-2 rounded-full hover:bg-neutral-200 transition-colors">
+            <a href="#cta" className="bg-white text-neutral-950 text-xs font-bold px-4 py-2 rounded-xl hover:bg-neutral-200 transition-colors">
               Get Licensing Details
             </a>
           </div>
