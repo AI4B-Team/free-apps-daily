@@ -4,6 +4,7 @@ import {
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
   Filter, ChevronDown, TrendingUp, Users, Gift
 } from "lucide-react";
+import heroWoman from "@/assets/hero-woman.png";
 
 const INDUSTRIES = [
   { label: "All Industries", value: "All" },
@@ -17,8 +18,15 @@ const INDUSTRIES = [
 
 const CATEGORIES = ["All", "Video", "Content", "Real Estate", "Sales", "Productivity", "Health", "Finance"];
 
+// Real company logos via simple-icons CDN (monochrome SVG)
 const TRUST_LOGOS = [
-  "ChatGPT", "Midjourney", "Descript", "Copy.ai", "Gamma", "Perplexity", "ElevenLabs", "Zapier"
+  { name: "Google",  slug: "google" },
+  { name: "Notion",  slug: "notion" },
+  { name: "Shopify", slug: "shopify" },
+  { name: "Spotify", slug: "spotify" },
+  { name: "Stripe",  slug: "stripe" },
+  { name: "Slack",   slug: "slack" },
+  { name: "HubSpot", slug: "hubspot" },
 ];
 
 const APPS = [
