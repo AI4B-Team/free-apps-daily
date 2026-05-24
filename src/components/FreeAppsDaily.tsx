@@ -136,51 +136,23 @@ export default function FreeAppsDaily() {
       </div>
 
       {/* ── Nav ── */}
-      <nav className="flex items-center gap-6 px-8 py-3 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
-        <div className="flex items-center gap-2.5 flex-shrink-0">
+      <nav className="flex items-center justify-between px-8 py-4 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
+        <div className="flex items-center gap-2.5">
           <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
           <span className="text-sm font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
         </div>
-
-        {/* Inline nav search — pill shaped */}
-        <form onSubmit={handleSearch} className="flex-1 max-w-2xl">
-          <div className="flex items-center gap-2 bg-neutral-50 hover:bg-white border border-neutral-200 hover:border-neutral-300 focus-within:bg-white focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100 rounded-full pl-4 pr-2 py-2 transition-all">
-            <Search size={15} className="text-neutral-400 flex-shrink-0" />
-            <input
-              type="text"
-              placeholder="Search apps, categories, or use cases…"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              className="flex-1 bg-transparent text-sm text-neutral-800 placeholder-neutral-400 outline-none min-w-0"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => { setSearchQuery(""); setLiveQuery(""); }}
-                className="text-neutral-400 hover:text-neutral-700 p-1"
-                aria-label="Clear search"
-              >
-                <X size={13} />
-              </button>
-            )}
-            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-semibold text-neutral-400 bg-white border border-neutral-200 rounded px-1.5 py-0.5">
-              ⌘K
-            </kbd>
-          </div>
-        </form>
-
-        <div className="flex items-center gap-5 flex-shrink-0">
+        <div className="flex items-center gap-6">
           <div className="relative hidden md:block" ref={industryRef}>
             <button
               onClick={() => setIndustryOpen(o => !o)}
-              className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+              className="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
             >
               <Filter size={13} />
               {activeIndustry.label}
               <ChevronDown size={13} className={`transition-transform ${industryOpen ? "rotate-180" : ""}`} />
             </button>
             {industryOpen && (
-              <div className="absolute top-full right-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
+              <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
                 {INDUSTRIES.map(ind => (
                   <button
                     key={ind.value}
@@ -198,13 +170,20 @@ export default function FreeAppsDaily() {
             )}
           </div>
 
-          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+          <button
+            onClick={() => setFilterOpen(o => !o)}
+            className="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+            aria-label="Search Apps"
+          >
+            {filterOpen ? <X size={17} /> : <Search size={17} />}
+          </button>
+
+          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors">
             <Bell size={12} />
             Get Daily Drops
           </button>
         </div>
       </nav>
-
 
       {/* ── Nav Search Drawer ── */}
       {filterOpen && (
@@ -366,11 +345,70 @@ export default function FreeAppsDaily() {
           </div>
         </div>
 
+        {/* ── Hero Search Bar (overlaps hero + trust band) ── */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-[calc(100%-4rem)] max-w-6xl px-4 z-30">
+          <form
+            onSubmit={handleSearch}
+            className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-2xl flex items-center gap-3"
+          >
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIndustryOpen(o => !o)}
+                className="flex items-center gap-2 text-sm text-neutral-700 font-medium border-r border-neutral-200 pr-4 py-1 hover:text-red-600 transition-colors min-w-max"
+              >
+                <Filter size={14} className="text-neutral-400" />
+                {activeIndustry.label}
+                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
+              </button>
+              {industryOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
+                  {INDUSTRIES.map(ind => (
+                    <button
+                      key={ind.value}
+                      type="button"
+                      onClick={() => selectIndustry(ind)}
+                      className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+                        activeIndustry.value === ind.value
+                          ? "text-red-600 font-semibold bg-red-50"
+                          : "text-neutral-600 hover:bg-neutral-50"
+                      }`}
+                    >
+                      {ind.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="flex-1 flex items-center gap-2 px-2">
+              <Search size={15} className="text-neutral-400 flex-shrink-0" />
+              <input
+                type="text"
+                placeholder="Search by app name, feature, or use case..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                className="flex-1 text-sm text-neutral-900 placeholder-neutral-400 outline-none bg-transparent"
+              />
+              {searchQuery && (
+                <button type="button" onClick={() => { setSearchQuery(""); setLiveQuery(""); }} className="text-neutral-400 hover:text-neutral-700">
+                  <X size={13} />
+                </button>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold px-7 py-3 rounded-xl transition-colors whitespace-nowrap"
+            >
+              Search
+            </button>
+          </form>
+        </div>
       </section>
 
-      {/* ── Trust / Logo Bar ── */}
-      <div className="border-b border-neutral-100 bg-white pt-10 pb-10 px-8">
-
+      {/* ── Trust / Logo Bar (search bar floats on this top border) ── */}
+      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8">
 
         <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
           {TRUST_LOGOS.map(logo => (
