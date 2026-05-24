@@ -163,10 +163,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       {/* DEMO */}
       <section id="demo" className="bg-white text-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="max-w-2xl mb-12">
+          <div className="mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">See It Live</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize text-neutral-950">A full platform, ready to brand.</h2>
-            <p className="mt-4 text-neutral-600">Dashboards, mobile, onboarding, and client portals — designed to ship under your name from day one.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight capitalize whitespace-nowrap text-neutral-950">A full platform, ready to brand.</h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl">Dashboards, mobile, onboarding, and client portals — designed to ship under your name from day one.</p>
           </div>
 
           <div className="grid grid-cols-12 gap-6">
