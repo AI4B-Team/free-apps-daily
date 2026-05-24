@@ -54,6 +54,7 @@ export default function FreeAppsDaily() {
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const [heroError, setHeroError]       = useState(false);
   const [industryOpen, setIndustryOpen] = useState(false);
+  const [heroIndustryOpen, setHeroIndustryOpen] = useState(false);
   const [activeCat, setActiveCat]       = useState("All");
   const [activeIndustry, setActiveIndustry] = useState<Industry>(INDUSTRIES[0]);
   const [searchQuery, setSearchQuery]   = useState("");
@@ -65,6 +66,7 @@ export default function FreeAppsDaily() {
   const [unlocked, setUnlocked]         = useState<number[]>([]);
   const [time, setTime]                 = useState({ h: 11, m: 42, s: 8 });
   const industryRef                     = useRef<HTMLDivElement | null>(null);
+  const heroIndustryRef                 = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -82,6 +84,7 @@ export default function FreeAppsDaily() {
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (industryRef.current && !industryRef.current.contains(e.target as Node)) setIndustryOpen(false);
+      if (heroIndustryRef.current && !heroIndustryRef.current.contains(e.target as Node)) setHeroIndustryOpen(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -93,6 +96,7 @@ export default function FreeAppsDaily() {
     setActiveIndustry(ind);
     setActiveCat(ind.value);
     setIndustryOpen(false);
+    setHeroIndustryOpen(false);
   }
 
   function handleSearch(e: React.FormEvent) {
