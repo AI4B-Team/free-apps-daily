@@ -144,14 +144,14 @@ export const INSTANT_APPS: InstantApp[] = [
     ownership: "Own Your Customer Base",
     accent: "from-emerald-500 to-teal-500",
     icon: Rocket,
-    headline: "Launch Your Own AI Real Estate Marketplace",
+    headline: "Launch your own AI real estate marketplace",
     subheadline: "Own a branded off-market property platform where AI matches buyers to deals — and you collect every listing and lead-gen fee.",
     hero: {
       eyebrow: "Marketplace · AI Matching",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
     },
     opportunity: {
-      title: "Stop Renting Software. Own It.",
+      title: "Stop renting software. Own it.",
       body: "Marketplaces compound. Every buyer and every listing makes the platform more valuable — and the platform is yours.",
       points: [
         "Own a two-sided marketplace",
