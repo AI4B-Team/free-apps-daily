@@ -327,17 +327,17 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       </section>
 
       {/* SOCIAL PROOF */}
-      <section className="border-t border-white/5 py-24">
+      <section className="bg-neutral-50 text-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Social Proof</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Real operators. Real launches.</h2>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize text-neutral-950">Real operators. Real launches.</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {app.metrics.map(m => (
-              <div key={m.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center">
-                <div className="text-4xl font-black tracking-tight">{m.value}</div>
+              <div key={m.label} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center">
+                <div className="text-4xl font-black tracking-tight text-neutral-950">{m.value}</div>
                 <div className="text-xs text-neutral-500 tracking-widest mt-2">{m.label}</div>
               </div>
             ))}
@@ -345,15 +345,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {app.testimonials.map(t => (
-              <div key={t.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <div key={t.name} className="rounded-2xl border border-neutral-200 bg-white p-8">
                 <div className="flex gap-1 mb-4">
                   {[0,1,2,3,4].map(i => <Star key={i} size={14} className="fill-amber-400 text-amber-400" />)}
                 </div>
-                <p className="text-lg text-neutral-200 leading-relaxed">"{t.quote}"</p>
+                <p className="text-lg text-neutral-800 leading-relaxed">"{t.quote}"</p>
                 <div className="mt-5 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold">{t.name.split(" ").map(n=>n[0]).join("")}</div>
+                  <div className="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold">{t.name.split(" ").map(n=>n[0]).join("")}</div>
                   <div>
-                    <div className="text-sm font-semibold">{t.name}</div>
+                    <div className="text-sm font-semibold text-neutral-950">{t.name}</div>
                     <div className="text-xs text-neutral-500">{t.role}</div>
                   </div>
                 </div>
@@ -362,6 +362,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           </div>
         </div>
       </section>
+
 
       {/* FAQ */}
       <section className="border-t border-white/5 py-24 bg-neutral-900/50">
