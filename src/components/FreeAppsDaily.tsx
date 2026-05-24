@@ -555,7 +555,8 @@ export default function FreeAppsDaily() {
       </div>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="max-w-5xl mx-auto px-8 py-10">
+      <div className="max-w-7xl mx-auto px-8 py-10">
+
 
         {featured && (
           <section className="mb-12">
