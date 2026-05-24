@@ -317,8 +317,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {CUSTOMIZATION.map(c => {
               const I = c.icon;
               return (
-                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center">
-                  <I size={18} className="text-white mx-auto mb-3" />
+                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                    <I size={16} className="text-white" />
+                  </div>
                   <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
                 </div>
               );
