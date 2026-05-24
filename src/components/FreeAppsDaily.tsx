@@ -82,41 +82,10 @@ const TRUST_LOGOS = [
   { name: "Webflow",    domain: "webflow.com" },
 ];
 
-const OWNED_APPS = [
-  {
-    name: "REVVEN",
-    tagline: "Your AI Content Empire — White Labeled",
-    emoji: "⚡",
-    desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
-    badges: ["RESELLABLE"] as BadgeKind[],
-    price: "Starts At $2,997",
-    ownership: "Full Resell Rights Included",
-    accent: "from-red-500 to-orange-500",
-    icon: Sparkles,
-  },
-  {
-    name: "Real Elite",
-    tagline: "Sell Your Own AI CRM to Real Estate Investors",
-    emoji: "🏠",
-    desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
-    badges: ["RESELLABLE"] as BadgeKind[],
-    price: "Starts At $4,997",
-    ownership: "Launch Under Your Brand",
-    accent: "from-indigo-500 to-purple-600",
-    icon: Layers,
-  },
-  {
-    name: "HomesDaily",
-    tagline: "Your Own AI Real Estate Marketplace",
-    emoji: "🏡",
-    desc: "Launch a fully-branded off-market property platform. AI matches buyers to deals, you collect the listing fees and lead-gen revenue.",
-    badges: ["RESELLABLE", "STAFF PICK"] as BadgeKind[],
-    price: "Starts At $3,497",
-    ownership: "Own Your Customer Base",
-    accent: "from-emerald-500 to-teal-500",
-    icon: Rocket,
-  },
-];
+import { INSTANT_APPS } from "@/data/instant-apps";
+import { Link } from "@tanstack/react-router";
+const OWNED_APPS = INSTANT_APPS;
+
 
 // Live app shape mapped from the server (field names match the previous hardcoded shape)
 type App = {
