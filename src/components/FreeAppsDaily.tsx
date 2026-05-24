@@ -417,7 +417,7 @@ export default function FreeAppsDaily() {
       </section>
 
       {/* ── Trust / Logo Bar ── */}
-      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8 overflow-hidden">】
+      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8 overflow-hidden">
         <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
           {TRUST_LOGOS.map(logo => (
             <img
