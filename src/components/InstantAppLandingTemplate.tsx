@@ -277,47 +277,101 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
 
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-8">
-              <MockBrowser accent={app.accent} />
+              <MockBrowser app={app} textSolid={textSolid} bgSolid={bgSolid} />
               <p className="mt-3 text-xs text-neutral-500 text-center">Admin dashboard · your branding, your domain</p>
             </div>
             <div className="col-span-12 lg:col-span-4 space-y-6">
-              <MockPhone accent={app.accent} />
+              <MockPhone app={app} bgSolid={bgSolid} textSolid={textSolid} />
               <p className="text-xs text-neutral-500 text-center -mt-3">Native mobile experience</p>
             </div>
+            {/* Onboarding Flow */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
-                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-2">Onboarding Flow</div>
-                <div className="space-y-2 mt-4">
-                  {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[10px] font-bold">{i}</div>
-                      <div className="h-2 bg-neutral-200 rounded flex-1" />
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
+                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Onboarding Flow</div>
+                <div className="space-y-3">
+                  {[
+                    { t: "Create account",     d: "SSO, email, or magic link" },
+                    { t: "Connect domain",     d: "DNS in one click" },
+                    { t: "Upload branding",    d: "Logo, colors, typography" },
+                    { t: "Invite your team",   d: "Roles & permissions" },
+                  ].map((s, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className={`w-6 h-6 rounded-full ${i === 0 ? bgSolid + " text-white" : "bg-neutral-100 text-neutral-500"} flex items-center justify-center text-[10px] font-bold shrink-0`}>
+                        {i === 0 ? <Check size={12} /> : i + 1}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-[12px] font-semibold text-neutral-900">{s.t}</div>
+                        <div className="text-[10px] text-neutral-500">{s.d}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
+                <div className="mt-4 pt-3 border-t border-neutral-100">
+                  <div className="flex items-center justify-between text-[10px] text-neutral-500">
+                    <span>Setup progress</span>
+                    <span className="font-semibold text-neutral-900">25%</span>
+                  </div>
+                  <div className="mt-1.5 h-1 rounded-full bg-neutral-100 overflow-hidden">
+                    <div className={`h-full w-1/4 ${bgSolid}`} />
+                  </div>
+                </div>
               </div>
             </div>
+            {/* Branding Customization */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Branding Customization</div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-200" />
-                  <div className="h-2 flex-1 bg-neutral-200 rounded" />
+                <div className="rounded-lg border border-neutral-200 p-3 mb-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-1">Brand Logo</div>
+                  <div className="flex items-center gap-2">
+                    <div className={`w-9 h-9 rounded-lg ${bgSolid} flex items-center justify-center`}>
+                      <Icon size={16} className="text-white" />
+                    </div>
+                    <div className="text-[11px] font-semibold text-neutral-900 truncate">{app.name}</div>
+                  </div>
                 </div>
-                <div className="flex gap-2 mt-4">
-                  {["bg-red-500","bg-indigo-500","bg-emerald-500","bg-amber-500","bg-fuchsia-500"].map(c => (
-                    <div key={c} className={`w-6 h-6 rounded-full ${c}`} />
-                  ))}
+                <div className="rounded-lg border border-neutral-200 p-3 mb-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-2">Primary Color</div>
+                  <div className="flex gap-1.5">
+                    {app.palette.map(c => (
+                      <div key={c} className={`w-6 h-6 rounded-full ${c} ring-2 ring-white shadow-sm`} />
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3">
+                  <div className="text-[9px] text-neutral-500 font-bold uppercase tracking-wider mb-2">Domain</div>
+                  <div className="font-mono text-[10px] text-neutral-700">app.<span className="text-neutral-900 font-bold">yourbrand</span>.com</div>
                 </div>
               </div>
             </div>
+            {/* Client-Facing Portal */}
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Client-Facing Portal</div>
-                <div className="space-y-2">
-                  <div className="h-3 bg-neutral-200 rounded w-3/4" />
-                  <div className="h-3 bg-neutral-200 rounded w-1/2" />
-                  <div className="h-16 bg-white rounded-lg mt-3 border border-neutral-200" />
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-neutral-200 flex items-center justify-center text-[10px] font-bold text-neutral-600">JD</div>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-semibold text-neutral-900 truncate">Jane Doe</div>
+                    <div className="text-[9px] text-neutral-500">Pro plan · since Jan 2025</div>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3 mb-2">
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-neutral-500">Next invoice</span>
+                    <span className="font-semibold text-neutral-900">$249.00</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] mt-1">
+                    <span className="text-neutral-500">Renews</span>
+                    <span className="font-semibold text-neutral-900">Jun 12</span>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-neutral-200 p-3 space-y-1.5">
+                  {["Download invoice", "Manage subscription", "Contact support"].map(l => (
+                    <div key={l} className="flex items-center justify-between text-[10px] text-neutral-700">
+                      <span>{l}</span>
+                      <ArrowRight size={10} className="text-neutral-400" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
