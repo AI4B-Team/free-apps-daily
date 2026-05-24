@@ -106,6 +106,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $4,997",
     ownership: "Launch Under Your Brand",
     accent: "from-indigo-500 to-purple-600",
+    palette: ["bg-indigo-500", "bg-violet-500", "bg-sky-500", "bg-blue-500", "bg-cyan-500"],
     icon: Layers,
     headline: "Own an AI CRM built for real estate investors",
     subheadline: "A complete white-label CRM you can launch under your brand and sell to investors, agents, and wholesalers in any market.",
