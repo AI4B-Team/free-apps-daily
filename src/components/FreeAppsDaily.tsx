@@ -369,10 +369,8 @@ export default function FreeAppsDaily() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             <div>
-              <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full mb-6">
-                <Zap size={11} className="fill-red-600" />
-                {APPS.length} Free AI Apps Available Today
-              </div>
+              <RotatingHeroBadge appsCount={APPS.length} />
+
 
               <h1 className="text-5xl font-black leading-[1.08] text-neutral-900 mb-5 tracking-tight">
                 The Best AI Apps.<br />
@@ -822,3 +820,26 @@ export default function FreeAppsDaily() {
     </div>
   );
 }
+
+function RotatingHeroBadge({ appsCount }: { appsCount: number }) {
+  const messages = [
+    `${appsCount} Free AI Apps Available Today`,
+    `3 New AI Businesses Added`,
+    `$620 In Free Apps Today`,
+    `4 White-Label Apps Available`,
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % messages.length), 3500);
+    return () => clearInterval(id);
+  }, [messages.length]);
+  return (
+    <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full mb-6 transition-opacity duration-300">
+      <Zap size={11} className="fill-red-600" />
+      <span key={idx} className="animate-in fade-in slide-in-from-bottom-1 duration-300">
+        {messages[idx]}
+      </span>
+    </div>
+  );
+}
+
