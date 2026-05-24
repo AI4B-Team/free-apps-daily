@@ -9,7 +9,7 @@ import {
   Rocket, Sparkles, Layers, DollarSign, Shield, CheckCircle2
 } from "lucide-react";
 
-type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED";
+type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED" | "VERIFIED" | "BRANDABLE";
 
 const BADGE_STYLES: Record<BadgeKind, string> = {
   "FREE TODAY":  "bg-red-50 text-red-600 border-red-200",
