@@ -18,6 +18,8 @@ const BADGE_STYLES: Record<BadgeKind, string> = {
   "RESELLABLE":  "bg-emerald-50 text-emerald-700 border-emerald-200",
   "NEW":         "bg-sky-50 text-sky-700 border-sky-200",
   "OWNED":       "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+  "VERIFIED":    "bg-sky-50 text-sky-700 border-sky-200",
+  "BRANDABLE":   "bg-indigo-50 text-indigo-700 border-indigo-200",
 };
 
 function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) {
