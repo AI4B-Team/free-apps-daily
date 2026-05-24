@@ -152,7 +152,14 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <span className="text-[11px] font-semibold tracking-wider uppercase text-neutral-300">{app.hero.eyebrow}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.02] max-w-4xl mx-auto capitalize">
-            {app.headline}
+            {(() => {
+              const h = app.headline;
+              const m = h.match(/^(.+?)\s+(AI .+)$/i);
+              if (m) return <>{m[1]}<br />{m[2]}</>;
+              const words = h.split(" ");
+              const mid = Math.ceil(words.length / 2);
+              return <>{words.slice(0, mid).join(" ")}<br />{words.slice(mid).join(" ")}</>;
+            })()}
           </h1>
           <p className="mt-6 text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
             {splitTwoLines(app.subheadline).map((line, i, arr) => (
