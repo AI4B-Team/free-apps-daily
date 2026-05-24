@@ -12,6 +12,8 @@ export type InstantApp = {
   price: string;
   ownership: string;
   accent: string;
+  /** 5-color icon palette unique to this app */
+  palette: string[];
   icon: LucideIcon;
   // Landing page extras
   headline: string;
@@ -62,6 +64,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $2,997",
     ownership: "Full Resell Rights Included",
     accent: "from-red-500 to-orange-500",
+    palette: ["bg-red-500", "bg-orange-500", "bg-amber-500", "bg-rose-500", "bg-yellow-500"],
     icon: Sparkles,
     headline: "Launch your own AI content company",
     subheadline: "Launch a fully-branded AI-powered content platform under your own name, pricing, and domain in minutes instead of years.",
@@ -103,6 +106,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $4,997",
     ownership: "Launch Under Your Brand",
     accent: "from-indigo-500 to-purple-600",
+    palette: ["bg-indigo-500", "bg-violet-500", "bg-sky-500", "bg-blue-500", "bg-cyan-500"],
     icon: Layers,
     headline: "Own an AI CRM built for real estate investors",
     subheadline: "A complete white-label CRM you can launch under your brand and sell to investors, agents, and wholesalers in any market.",
@@ -143,6 +147,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $3,497",
     ownership: "Own Your Customer Base",
     accent: "from-emerald-500 to-teal-500",
+    palette: ["bg-emerald-500", "bg-teal-500", "bg-lime-500", "bg-green-600", "bg-cyan-600"],
     icon: Rocket,
     headline: "Launch your own AI real estate marketplace",
     subheadline: "Own a branded off-market property platform where AI matches buyers to deals — and you collect every listing and lead-gen fee.",

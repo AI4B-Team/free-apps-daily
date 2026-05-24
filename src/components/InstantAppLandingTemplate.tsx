@@ -120,11 +120,8 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
     return [m[1], m[2]];
   };
 
-  // Rotating palette so icon tiles don't all share one color
-  const ICON_PALETTE = [
-    "bg-indigo-500", "bg-rose-500", "bg-emerald-500", "bg-amber-500",
-    "bg-sky-500", "bg-fuchsia-500", "bg-orange-500", "bg-teal-500",
-  ];
+  // Per-app icon palette so each landing page has its own color identity
+  const ICON_PALETTE = app.palette;
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
 
@@ -253,19 +250,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
             ))}
           </p>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
-            {app.opportunity.points.map((p, idx) => {
-              const Icons = [Crown, Users, Briefcase, Globe, CreditCard];
-              const I = Icons[idx % Icons.length];
-              return (
-                <div key={p} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center flex flex-col items-center gap-3">
-                  <div className={`w-11 h-11 rounded-xl ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center shadow-md`}>
-                    <I size={18} className="text-white" />
-                  </div>
-                  <span className="text-xs font-bold tracking-widest uppercase text-neutral-200 leading-snug">{p}</span>
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+            {app.opportunity.points.map((p, idx) => (
+              <div key={p} className="bg-neutral-950 p-6 flex flex-col gap-4 text-left">
+                <div className={`text-xs font-mono font-bold ${textSolid}`}>
+                  {String(idx + 1).padStart(2, "0")}
                 </div>
-              );
-            })}
+                <span className="text-sm font-semibold text-neutral-200 leading-snug">{p}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -305,15 +298,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Who This Is For</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Built for operators who want to own, not rent.</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {app.audience.map((a, idx) => {
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {app.audience.map((a) => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
-                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
-                    <I size={18} className="text-white" />
+                <div key={a} className="flex flex-col items-center text-center gap-3 group">
+                  <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.03] transition-colors">
+                    <I size={20} className="text-neutral-300" strokeWidth={1.5} />
                   </div>
-                  <div className="text-sm font-semibold text-neutral-200">{a}</div>
+                  <div className="text-sm font-medium text-neutral-300">{a}</div>
                 </div>
               );
             })}
@@ -349,15 +342,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Customization</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Every pixel is yours to brand.</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {CUSTOMIZATION.map((c, idx) => {
               const I = c.icon;
               return (
-                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
-                    <I size={16} className="text-white" />
-                  </div>
-                  <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
+                <div key={c.title} className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] pl-2 pr-5 py-2 hover:border-white/30 transition-colors">
+                  <span className={`w-7 h-7 rounded-full ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center`}>
+                    <I size={13} className="text-white" />
+                  </span>
+                  <span className="text-sm font-semibold text-neutral-200">{c.title}</span>
                 </div>
               );
             })}
