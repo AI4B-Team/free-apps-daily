@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { fetchTodaysApps, subscribe, claimApp } from "@/lib/apps.functions";
 import {
   Search, X, Lock, Unlock, Check, Flame, Star,
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
