@@ -342,15 +342,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Customization</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Every pixel is yours to brand.</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {CUSTOMIZATION.map((c, idx) => {
               const I = c.icon;
               return (
-                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
-                    <I size={16} className="text-white" />
-                  </div>
-                  <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
+                <div key={c.title} className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] pl-2 pr-5 py-2 hover:border-white/30 transition-colors">
+                  <span className={`w-7 h-7 rounded-full ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center`}>
+                    <I size={13} className="text-white" />
+                  </span>
+                  <span className="text-sm font-semibold text-neutral-200">{c.title}</span>
                 </div>
               );
             })}
