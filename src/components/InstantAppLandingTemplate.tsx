@@ -275,8 +275,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {app.audience.map(a => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
-                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/25 transition-colors">
-                  <I size={20} className="text-white mx-auto mb-3" />
+                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                    <I size={18} className="text-white" />
+                  </div>
                   <div className="text-sm font-semibold text-neutral-200">{a}</div>
                 </div>
               );
