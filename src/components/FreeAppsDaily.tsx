@@ -738,9 +738,9 @@ export default function FreeAppsDaily() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-500">
-            <div className="flex items-center gap-1.5"><Shield size={12} className="text-emerald-400" /> Keep 100% of revenue</div>
-            <div className="w-px h-3 bg-white/10" />
             <div className="flex items-center gap-1.5"><Layers size={12} className="text-indigo-400" /> Full white-label rights</div>
+            <div className="w-px h-3 bg-white/10" />
+            <div className="flex items-center gap-1.5"><DollarSign size={12} className="text-emerald-400" /> Keep 100% of revenue</div>
             <div className="w-px h-3 bg-white/10" />
             <div className="flex items-center gap-1.5"><Sparkles size={12} className="text-amber-400" /> Launch in under 30 mins</div>
           </div>
