@@ -2,8 +2,37 @@ import { useState, useEffect, useRef } from "react";
 import {
   Search, X, Lock, Unlock, Check, Flame, Star,
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
-  Filter, ChevronDown, TrendingUp, Users, Gift
+  Filter, ChevronDown, TrendingUp, Users, Gift,
+  Rocket, Sparkles, Layers, DollarSign, Shield
 } from "lucide-react";
+
+type BadgeKind = "FREE TODAY" | "STAFF PICK" | "WHITE LABEL" | "RESELLABLE" | "NEW" | "OWNED";
+
+const BADGE_STYLES: Record<BadgeKind, string> = {
+  "FREE TODAY":  "bg-red-50 text-red-600 border-red-200",
+  "STAFF PICK":  "bg-amber-50 text-amber-700 border-amber-200",
+  "WHITE LABEL": "bg-indigo-50 text-indigo-700 border-indigo-200",
+  "RESELLABLE":  "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "NEW":         "bg-sky-50 text-sky-700 border-sky-200",
+  "OWNED":       "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+};
+
+function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) {
+  const darkMap: Record<BadgeKind, string> = {
+    "FREE TODAY":  "bg-red-500/15 text-red-300 border-red-500/30",
+    "STAFF PICK":  "bg-amber-500/15 text-amber-300 border-amber-500/30",
+    "WHITE LABEL": "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
+    "RESELLABLE":  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+    "NEW":         "bg-sky-500/15 text-sky-300 border-sky-500/30",
+    "OWNED":       "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30",
+  };
+  const cls = dark ? darkMap[kind] : BADGE_STYLES[kind];
+  return (
+    <span className={`text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border ${cls}`}>
+      {kind}
+    </span>
+  );
+}
 import heroWoman from "@/assets/hero-woman.png";
 
 const INDUSTRIES = [
@@ -51,18 +80,54 @@ const TRUST_LOGOS = [
 ];
 
 const APPS = [
-  { id: 1,  name: "Descript Pro",    cat: "Video",        emoji: "🎬", offer: "14-Day Pro Free",    value: 24,  claimed: 847,  featured: true,  ourPick: false, desc: "AI video editor — remove filler words, clone your voice, and publish everywhere in one click." },
-  { id: 2,  name: "Real Elite",      cat: "Real Estate",  emoji: "🏠", offer: "Free Trial",          value: 97,  claimed: 312,  featured: false, ourPick: true,  desc: "AI-powered investor CRM — auto-score leads, analyze deals, and submit bulk offers from one dashboard." },
-  { id: 3,  name: "REVVEN",          cat: "Content",      emoji: "⚡", offer: "Free Access",          value: 79,  claimed: 198,  featured: false, ourPick: true,  desc: "Create content, automate your brand, and monetize — the AI business suite built for entrepreneurs." },
-  { id: 4,  name: "Copy.ai",         cat: "Content",      emoji: "✍️", offer: "7-Day Pro Free",       value: 49,  claimed: 521,  featured: false, ourPick: false, desc: "Generate sales copy, email sequences, and social content in seconds with 90+ templates." },
-  { id: 5,  name: "Gamma.app",       cat: "Productivity", emoji: "📊", offer: "Free Starter",         value: 15,  claimed: 634,  featured: false, ourPick: false, desc: "AI-generated presentations and documents — build a full deck in under 60 seconds." },
-  { id: 6,  name: "Perplexity Pro",  cat: "Productivity", emoji: "🧠", offer: "1-Month Pro Free",     value: 20,  claimed: 1203, featured: false, ourPick: false, desc: "AI-powered research engine with real-time web search, citations, and deep document analysis." },
-  { id: 7,  name: "Instantly.ai",    cat: "Sales",        emoji: "📧", offer: "Free Trial",           value: 37,  claimed: 289,  featured: false, ourPick: false, desc: "Cold email platform with AI warmup, sequence builder, and inbox rotation at scale." },
-  { id: 8,  name: "ElevenLabs",      cat: "Content",      emoji: "🎙️", offer: "Free Tier Unlocked",   value: 22,  claimed: 472,  featured: false, ourPick: false, desc: "Hyper-realistic AI voice cloning and text-to-speech in 29 languages." },
-  { id: 9,  name: "Midjourney Lite", cat: "Content",      emoji: "🎨", offer: "200 Free Images",      value: 10,  claimed: 918,  featured: false, ourPick: false, desc: "The world's leading AI image generator — cinematic, photorealistic, and endlessly creative." },
-  { id: 10, name: "Otter.ai Pro",    cat: "Productivity", emoji: "📝", offer: "30-Day Pro Free",      value: 17,  claimed: 341,  featured: false, ourPick: false, desc: "AI meeting transcription, auto-summaries, and action items delivered instantly after every call." },
-  { id: 11, name: "Zapier AI",       cat: "Productivity", emoji: "🔗", offer: "Free Zaps Pack",       value: 29,  claimed: 567,  featured: false, ourPick: false, desc: "Automate 6,000+ apps with AI-built workflows — no code, no developers, no limits." },
-  { id: 12, name: "HomesDaily",      cat: "Real Estate",  emoji: "🏡", offer: "Buyer Access Free",    value: 0,   claimed: 144,  featured: false, ourPick: true,  desc: "AI-powered real estate marketplace — find off-market deals, motivated sellers, and distressed properties." },
+  { id: 1,  name: "Descript Pro",    cat: "Video",        emoji: "🎬", offer: "14-Day Pro Free",    value: 24,  claimed: 847,  featured: true,  ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],   desc: "AI video editor — remove filler words, clone your voice, and publish everywhere in one click." },
+  { id: 2,  name: "Real Elite",      cat: "Real Estate",  emoji: "🏠", offer: "Free Trial",          value: 97,  claimed: 312,  featured: false, ourPick: true,  badges: ["FREE TODAY", "WHITE LABEL", "RESELLABLE"] as BadgeKind[], desc: "AI-powered investor CRM — auto-score leads, analyze deals, and submit bulk offers from one dashboard." },
+  { id: 3,  name: "REVVEN",          cat: "Content",      emoji: "⚡", offer: "Free Access",          value: 79,  claimed: 198,  featured: false, ourPick: true,  badges: ["FREE TODAY", "WHITE LABEL", "RESELLABLE"] as BadgeKind[], desc: "Create content, automate your brand, and monetize — the AI business suite built for entrepreneurs." },
+  { id: 4,  name: "Copy.ai",         cat: "Content",      emoji: "✍️", offer: "7-Day Pro Free",       value: 49,  claimed: 521,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "Generate sales copy, email sequences, and social content in seconds with 90+ templates." },
+  { id: 5,  name: "Gamma.app",       cat: "Productivity", emoji: "📊", offer: "Free Starter",         value: 15,  claimed: 634,  featured: false, ourPick: false, badges: ["FREE TODAY", "NEW"] as BadgeKind[],         desc: "AI-generated presentations and documents — build a full deck in under 60 seconds." },
+  { id: 6,  name: "Perplexity Pro",  cat: "Productivity", emoji: "🧠", offer: "1-Month Pro Free",     value: 20,  claimed: 1203, featured: false, ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],  desc: "AI-powered research engine with real-time web search, citations, and deep document analysis." },
+  { id: 7,  name: "Instantly.ai",    cat: "Sales",        emoji: "📧", offer: "Free Trial",           value: 37,  claimed: 289,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "Cold email platform with AI warmup, sequence builder, and inbox rotation at scale." },
+  { id: 8,  name: "ElevenLabs",      cat: "Content",      emoji: "🎙️", offer: "Free Tier Unlocked",   value: 22,  claimed: 472,  featured: false, ourPick: false, badges: ["FREE TODAY", "STAFF PICK"] as BadgeKind[],  desc: "Hyper-realistic AI voice cloning and text-to-speech in 29 languages." },
+  { id: 9,  name: "Midjourney Lite", cat: "Content",      emoji: "🎨", offer: "200 Free Images",      value: 10,  claimed: 918,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "The world's leading AI image generator — cinematic, photorealistic, and endlessly creative." },
+  { id: 10, name: "Otter.ai Pro",    cat: "Productivity", emoji: "📝", offer: "30-Day Pro Free",      value: 17,  claimed: 341,  featured: false, ourPick: false, badges: ["FREE TODAY"] as BadgeKind[],                desc: "AI meeting transcription, auto-summaries, and action items delivered instantly after every call." },
+  { id: 11, name: "Zapier AI",       cat: "Productivity", emoji: "🔗", offer: "Free Zaps Pack",       value: 29,  claimed: 567,  featured: false, ourPick: false, badges: ["FREE TODAY", "NEW"] as BadgeKind[],         desc: "Automate 6,000+ apps with AI-built workflows — no code, no developers, no limits." },
+  { id: 12, name: "HomesDaily",      cat: "Real Estate",  emoji: "🏡", offer: "Buyer Access Free",    value: 0,   claimed: 144,  featured: false, ourPick: true,  badges: ["FREE TODAY", "RESELLABLE", "STAFF PICK"] as BadgeKind[],  desc: "AI-powered real estate marketplace — find off-market deals, motivated sellers, and distressed properties." },
+];
+
+const OWNED_APPS = [
+  {
+    name: "REVVEN",
+    tagline: "Your AI Content Empire — White Labeled",
+    emoji: "⚡",
+    desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
+    badges: ["OWNED", "WHITE LABEL", "RESELLABLE"] as BadgeKind[],
+    price: "From $2,997 one-time",
+    margin: "Keep 100% of revenue",
+    accent: "from-red-500 to-orange-500",
+    icon: Sparkles,
+  },
+  {
+    name: "Real Elite",
+    tagline: "Sell Your Own AI CRM to Real Estate Investors",
+    emoji: "🏠",
+    desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
+    badges: ["OWNED", "WHITE LABEL", "RESELLABLE"] as BadgeKind[],
+    price: "From $4,997 one-time",
+    margin: "Avg reseller MRR: $18K",
+    accent: "from-indigo-500 to-purple-600",
+    icon: Layers,
+  },
+  {
+    name: "HomesDaily",
+    tagline: "Your Own AI Real Estate Marketplace",
+    emoji: "🏡",
+    desc: "Launch a fully-branded off-market property platform. AI matches buyers to deals, you collect the listing fees and lead-gen revenue.",
+    badges: ["OWNED", "RESELLABLE", "STAFF PICK"] as BadgeKind[],
+    price: "From $3,497 one-time",
+    margin: "$50–$500 per lead",
+    accent: "from-emerald-500 to-teal-500",
+    icon: Rocket,
+  },
 ];
 
 type App = (typeof APPS)[number];
@@ -482,10 +547,11 @@ export default function FreeAppsDaily() {
                     <p className="text-sm text-neutral-500 leading-relaxed">{featured.desc}</p>
                   </div>
                 </div>
-                <div className="flex gap-2 mb-5 flex-wrap">
-                  <span className="text-xs bg-neutral-100 text-neutral-500 px-3 py-1 rounded-full border border-neutral-200">{featured.cat}</span>
-                  <span className="text-xs border border-red-200 bg-red-50 text-red-600 px-3 py-1 rounded-full font-semibold">{featured.offer}</span>
-                  <span className="text-xs bg-neutral-100 text-neutral-400 px-3 py-1 rounded-full border border-neutral-200">Normally ${featured.value}/mo</span>
+                <div className="flex gap-1.5 mb-5 flex-wrap items-center">
+                  {featured.badges.map(b => <TypeBadge key={b} kind={b} />)}
+                  <span className="text-xs bg-neutral-100 text-neutral-500 px-2.5 py-0.5 rounded-full border border-neutral-200">{featured.cat}</span>
+                  <span className="text-xs border border-neutral-200 bg-neutral-50 text-neutral-500 px-2.5 py-0.5 rounded-full font-medium">{featured.offer}</span>
+                  <span className="text-xs bg-neutral-100 text-neutral-400 px-2.5 py-0.5 rounded-full border border-neutral-200">Normally ${featured.value}/mo</span>
                 </div>
                 {isUnlocked(featured.id) ? (
                   <div className="w-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
@@ -554,9 +620,9 @@ export default function FreeAppsDaily() {
                     </div>
                   </div>
                   <p className="text-xs text-neutral-500 leading-relaxed mb-3 flex-1">{app.desc}</p>
-                  <div className="flex gap-1.5 mb-3 flex-wrap">
-                    <span className="text-xs border border-red-200 bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-medium">{app.offer}</span>
-                    {app.value > 0 && <span className="text-xs border border-neutral-200 bg-neutral-50 text-neutral-400 px-2 py-0.5 rounded-full">${app.value}/mo value</span>}
+                  <div className="flex gap-1 mb-3 flex-wrap">
+                    {app.badges.map(b => <TypeBadge key={b} kind={b} />)}
+                    {app.value > 0 && <span className="text-[10px] border border-neutral-200 bg-neutral-50 text-neutral-400 px-2 py-0.5 rounded-full">${app.value}/mo value</span>}
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     {isUnlocked(app.id) ? (
@@ -576,24 +642,88 @@ export default function FreeAppsDaily() {
           )}
         </section>
 
-        <section className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-red-200 bg-red-50 hover:bg-red-100 rounded-2xl p-6 cursor-pointer transition-colors group">
-            <span className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2 block">Creators & Agencies</span>
-            <h3 className="text-base font-bold mb-2 text-neutral-900">Create. Automate. Monetize.</h3>
-            <p className="text-sm text-neutral-500 leading-relaxed mb-4">REVVEN gives you AI content creation, brand automation, and a full business suite — all in one platform.</p>
-            <div className="flex items-center gap-1 text-sm font-bold text-red-600 group-hover:gap-2.5 transition-all">
-              <span>Explore REVVEN</span><ArrowRight size={14} />
+      </div>
+
+      {/* ── LAUNCH YOUR OWN AI BUSINESS (Premium Dark) ── */}
+      <section className="relative bg-neutral-950 text-white overflow-hidden mt-14">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.15),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(99,102,241,0.18),transparent_55%)] pointer-events-none" />
+
+        <div className="relative max-w-6xl mx-auto px-8 py-20">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-red-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 backdrop-blur">
+              <Rocket size={11} />
+              For Founders, Operators & Agencies
             </div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
+              Don't Just Use AI Apps.<br />
+              <span className="bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+                Launch Your Own AI Business.
+              </span>
+            </h2>
+            <p className="text-base text-neutral-400 leading-relaxed">
+              Stop renting tools. Own them. Our white-label AI platforms let you launch a real software business —
+              your brand, your pricing, 100% of the revenue.
+            </p>
           </div>
-          <div className="border border-neutral-200 bg-neutral-50 hover:bg-neutral-100 rounded-2xl p-6 cursor-pointer transition-colors group">
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2 block">Real Estate Investors</span>
-            <h3 className="text-base font-bold mb-2 text-neutral-900">Find. Analyze. Close.</h3>
-            <p className="text-sm text-neutral-500 leading-relaxed mb-4">Real Elite is the AI CRM built for serious investors — automated scoring, deal analysis, and bulk offers.</p>
-            <div className="flex items-center gap-1 text-sm font-bold text-neutral-800 group-hover:gap-2.5 transition-all">
-              <span>Explore Real Elite</span><ArrowRight size={14} />
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+            {OWNED_APPS.map(app => {
+              const Icon = app.icon;
+              return (
+                <div
+                  key={app.name}
+                  className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-500/10 backdrop-blur-sm"
+                >
+                  <div className={`absolute -top-px left-6 right-6 h-px bg-gradient-to-r ${app.accent} opacity-60`} />
+
+                  <div className="flex items-start justify-between mb-5">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.accent} flex items-center justify-center shadow-lg`}>
+                      <Icon size={24} className="text-white" />
+                    </div>
+                    <span className="text-3xl">{app.emoji}</span>
+                  </div>
+
+                  <h3 className="text-2xl font-black mb-1.5 text-white">{app.name}</h3>
+                  <p className="text-sm font-semibold text-neutral-300 mb-3 leading-snug">{app.tagline}</p>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-5 flex-1">{app.desc}</p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {app.badges.map(b => <TypeBadge key={b} kind={b} dark />)}
+                  </div>
+
+                  <div className="border-t border-white/10 pt-4 space-y-2 mb-5">
+                    <div className="flex items-center gap-2 text-xs">
+                      <DollarSign size={12} className="text-emerald-400" />
+                      <span className="text-neutral-400">License:</span>
+                      <span className="font-bold text-white">{app.price}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <TrendingUp size={12} className="text-emerald-400" />
+                      <span className="text-neutral-400">Upside:</span>
+                      <span className="font-bold text-white">{app.margin}</span>
+                    </div>
+                  </div>
+
+                  <button className={`w-full bg-gradient-to-r ${app.accent} text-white text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg`}>
+                    Get Licensing Details <ArrowRight size={14} />
+                  </button>
+                </div>
+              );
+            })}
           </div>
-        </section>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-500">
+            <div className="flex items-center gap-1.5"><Shield size={12} className="text-emerald-400" /> Source code included</div>
+            <div className="w-px h-3 bg-white/10" />
+            <div className="flex items-center gap-1.5"><Layers size={12} className="text-indigo-400" /> Full white-label rights</div>
+            <div className="w-px h-3 bg-white/10" />
+            <div className="flex items-center gap-1.5"><Sparkles size={12} className="text-amber-400" /> Launch in under 14 days</div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-8 py-10">
 
         <section className="mt-8 bg-black rounded-2xl p-10 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
