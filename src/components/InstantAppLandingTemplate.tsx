@@ -288,7 +288,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Business Model</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">How people use this platform.</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight capitalize whitespace-nowrap">How people use this platform.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {app.businessModels.map((m, i) => (
