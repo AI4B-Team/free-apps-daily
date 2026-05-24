@@ -710,7 +710,9 @@ export default function FreeAppsDaily() {
             {OWNED_APPS.map(app => {
               const Icon = app.icon;
               return (
-                <div
+                <Link
+                  to="/instant-apps/$slug"
+                  params={{ slug: app.slug }}
                   key={app.name}
                   className="group relative bg-white/[0.04] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1"
                 >
