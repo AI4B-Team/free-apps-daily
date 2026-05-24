@@ -718,16 +718,15 @@ export default function FreeAppsDaily() {
 
                   <div className="border-t border-white/10 pt-4 space-y-2 mb-5">
                     <div className="flex items-center gap-2 text-xs">
-                      <DollarSign size={12} className="text-neutral-400" />
-                      <span className="text-neutral-400">License:</span>
-                      <span className="font-bold text-white">{app.price}</span>
+                      <CheckCircle2 size={12} className="text-emerald-400" />
+                      <span className="font-semibold text-neutral-200">{app.ownership}</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <TrendingUp size={12} className="text-neutral-400" />
-                      <span className="text-neutral-400">Upside:</span>
-                      <span className="font-bold text-white">{app.margin}</span>
+                      <DollarSign size={12} className="text-neutral-400" />
+                      <span className="font-bold text-white">{app.price}</span>
                     </div>
                   </div>
+
 
                   <button className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
                     Get Licensing Details <ArrowRight size={14} />
