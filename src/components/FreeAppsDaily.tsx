@@ -380,7 +380,7 @@ export default function FreeAppsDaily() {
               </h1>
 
               <p className="text-base text-neutral-500 leading-relaxed mb-8 max-w-md">
-                Join 47,218 entrepreneurs discovering and claiming free AI tools daily — curated by The AI For Business Team.
+                Discover the AI apps entrepreneurs are using to build faster, automate work, and make more money. Plus exclusive AI business apps you can rebrand and resell as your own.
               </p>
 
               {heroSubmitted ? (
