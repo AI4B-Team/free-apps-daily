@@ -684,9 +684,9 @@ export default function FreeAppsDaily() {
               <Rocket size={11} />
               For Founders, Operators & Agencies
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
-              Don't Just Use AI Apps.<br />
-              <span className="bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
+              <span className="block whitespace-nowrap">Don't Just Use AI Apps.</span>
+              <span className="block whitespace-nowrap bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
                 Launch Your Own AI Business.
               </span>
             </h2>
