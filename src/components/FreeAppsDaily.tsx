@@ -136,23 +136,51 @@ export default function FreeAppsDaily() {
       </div>
 
       {/* ── Nav ── */}
-      <nav className="flex items-center justify-between px-8 py-4 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
-        <div className="flex items-center gap-2.5">
+      <nav className="flex items-center gap-6 px-8 py-3 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
+        <div className="flex items-center gap-2.5 flex-shrink-0">
           <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
           <span className="text-sm font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
         </div>
-        <div className="flex items-center gap-6">
+
+        {/* Inline nav search — pill shaped */}
+        <form onSubmit={handleSearch} className="flex-1 max-w-2xl">
+          <div className="flex items-center gap-2 bg-neutral-50 hover:bg-white border border-neutral-200 hover:border-neutral-300 focus-within:bg-white focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100 rounded-full pl-4 pr-2 py-2 transition-all">
+            <Search size={15} className="text-neutral-400 flex-shrink-0" />
+            <input
+              type="text"
+              placeholder="Search apps, categories, or use cases…"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="flex-1 bg-transparent text-sm text-neutral-800 placeholder-neutral-400 outline-none min-w-0"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => { setSearchQuery(""); setLiveQuery(""); }}
+                className="text-neutral-400 hover:text-neutral-700 p-1"
+                aria-label="Clear search"
+              >
+                <X size={13} />
+              </button>
+            )}
+            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-semibold text-neutral-400 bg-white border border-neutral-200 rounded px-1.5 py-0.5">
+              ⌘K
+            </kbd>
+          </div>
+        </form>
+
+        <div className="flex items-center gap-5 flex-shrink-0">
           <div className="relative hidden md:block" ref={industryRef}>
             <button
               onClick={() => setIndustryOpen(o => !o)}
-              className="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
+              className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               <Filter size={13} />
               {activeIndustry.label}
               <ChevronDown size={13} className={`transition-transform ${industryOpen ? "rotate-180" : ""}`} />
             </button>
             {industryOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
+              <div className="absolute top-full right-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
                 {INDUSTRIES.map(ind => (
                   <button
                     key={ind.value}
@@ -170,20 +198,13 @@ export default function FreeAppsDaily() {
             )}
           </div>
 
-          <button
-            onClick={() => setFilterOpen(o => !o)}
-            className="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
-            aria-label="Search Apps"
-          >
-            {filterOpen ? <X size={17} /> : <Search size={17} />}
-          </button>
-
-          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors">
+          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors whitespace-nowrap">
             <Bell size={12} />
             Get Daily Drops
           </button>
         </div>
       </nav>
+
 
       {/* ── Nav Search Drawer ── */}
       {filterOpen && (
