@@ -182,7 +182,7 @@ export default function FreeAppsDaily() {
             {filterOpen ? <X size={17} /> : <Search size={17} />}
           </button>
 
-          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors">
+          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             <Bell size={12} />
             Get Daily Drops
           </button>
