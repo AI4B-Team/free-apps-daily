@@ -380,7 +380,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
         <div className={`absolute inset-0 bg-gradient-to-br ${app.accent} opacity-20`} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-10 text-center">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight whitespace-nowrap">Launch Faster With AI</h2>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight whitespace-nowrap">Launch faster with AI</h2>
           <p className="mt-6 text-lg text-neutral-300">{app.price} · {app.ownership}</p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a href="#" className="bg-white text-neutral-950 font-bold px-7 py-4 rounded-xl inline-flex items-center gap-2 hover:bg-neutral-200 transition-colors">

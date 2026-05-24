@@ -63,14 +63,14 @@ export const INSTANT_APPS: InstantApp[] = [
     ownership: "Full Resell Rights Included",
     accent: "from-red-500 to-orange-500",
     icon: Sparkles,
-    headline: "Launch Your Own AI Content Company",
+    headline: "Launch your own AI content company",
     subheadline: "Launch a fully-branded AI-powered content platform under your own name, pricing, and domain in days instead of years.",
     hero: {
       eyebrow: "AI Content Platform · White-Label",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
     },
     opportunity: {
-      title: "Stop Renting Software. Own It.",
+      title: "Stop renting software. Own it.",
       body: "Most operators rent software from someone else and rebuild the same audience over and over. REVVEN flips the model — you own the platform, set the pricing, and keep every dollar of recurring revenue.",
       points: [
         "Own the platform end-to-end",
@@ -104,14 +104,14 @@ export const INSTANT_APPS: InstantApp[] = [
     ownership: "Launch Under Your Brand",
     accent: "from-indigo-500 to-purple-600",
     icon: Layers,
-    headline: "Own An AI CRM Built For Real Estate Investors",
+    headline: "Own an AI CRM built for real estate investors",
     subheadline: "A complete white-label CRM you can launch under your brand and sell to investors, agents, and wholesalers in any market.",
     hero: {
       eyebrow: "AI CRM · Real Estate",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
     },
     opportunity: {
-      title: "Stop Renting Software. Own It.",
+      title: "Stop renting software. Own it.",
       body: "Investor CRMs charge $97–$497 per month per seat. With Real Elite, you become the platform — not the customer.",
       points: [
         "Own a full investor CRM",
@@ -144,14 +144,14 @@ export const INSTANT_APPS: InstantApp[] = [
     ownership: "Own Your Customer Base",
     accent: "from-emerald-500 to-teal-500",
     icon: Rocket,
-    headline: "Launch Your Own AI Real Estate Marketplace",
+    headline: "Launch your own AI real estate marketplace",
     subheadline: "Own a branded off-market property platform where AI matches buyers to deals — and you collect every listing and lead-gen fee.",
     hero: {
       eyebrow: "Marketplace · AI Matching",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
     },
     opportunity: {
-      title: "Stop Renting Software. Own It.",
+      title: "Stop renting software. Own it.",
       body: "Marketplaces compound. Every buyer and every listing makes the platform more valuable — and the platform is yours.",
       points: [
         "Own a two-sided marketplace",
