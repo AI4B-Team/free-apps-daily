@@ -6,13 +6,14 @@ export const Route = createFileRoute("/instant-apps/$slug")({
   loader: ({ params }) => {
     const app = getInstantApp(params.slug);
     if (!app) throw notFound();
-    return { app };
+    // Return only serializable data. The component re-resolves the full app
+    // (which contains non-serializable icon components) by slug.
+    return { slug: app.slug, headline: app.headline, subheadline: app.subheadline, name: app.name };
   },
   head: ({ loaderData }) => {
-    const app = loaderData?.app;
-    if (!app) return { meta: [{ title: "Instant App" }] };
-    const title = `${app.headline} — ${app.name}`;
-    const desc = app.subheadline;
+    if (!loaderData) return { meta: [{ title: "Instant App" }] };
+    const title = `${loaderData.headline} — ${loaderData.name}`;
+    const desc = loaderData.subheadline;
     return {
       meta: [
         { title },
@@ -43,6 +44,8 @@ export const Route = createFileRoute("/instant-apps/$slug")({
 });
 
 function InstantAppPage() {
-  const { app } = Route.useLoaderData();
+  const { slug } = Route.useLoaderData();
+  const app = getInstantApp(slug);
+  if (!app) return null;
   return <InstantAppLandingTemplate app={app} />;
 }
