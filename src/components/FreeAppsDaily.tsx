@@ -6,7 +6,7 @@ import {
   Search, X, Lock, Unlock, Check, Flame, Star,
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
   Filter, ChevronDown, TrendingUp, Users, Gift,
-  Rocket, Sparkles, Layers, DollarSign, Shield
+  Rocket, Sparkles, Layers, DollarSign, Shield, CheckCircle2
 } from "lucide-react";
 
 type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED";
@@ -89,8 +89,8 @@ const OWNED_APPS = [
     emoji: "⚡",
     desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
     badges: ["RESELLABLE"] as BadgeKind[],
-    price: "From $2,997 one-time",
-    margin: "Keep 100% of revenue",
+    price: "Starts At $2,997",
+    ownership: "Full Resell Rights Included",
     accent: "from-red-500 to-orange-500",
     icon: Sparkles,
   },
@@ -100,8 +100,8 @@ const OWNED_APPS = [
     emoji: "🏠",
     desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
     badges: ["RESELLABLE"] as BadgeKind[],
-    price: "From $4,997 one-time",
-    margin: "Avg reseller MRR: $18K",
+    price: "Starts At $4,997",
+    ownership: "Launch Under Your Brand",
     accent: "from-indigo-500 to-purple-600",
     icon: Layers,
   },
@@ -111,8 +111,8 @@ const OWNED_APPS = [
     emoji: "🏡",
     desc: "Launch a fully-branded off-market property platform. AI matches buyers to deals, you collect the listing fees and lead-gen revenue.",
     badges: ["RESELLABLE", "STAFF PICK"] as BadgeKind[],
-    price: "From $3,497 one-time",
-    margin: "$50–$500 per lead",
+    price: "Starts At $3,497",
+    ownership: "Own Your Customer Base",
     accent: "from-emerald-500 to-teal-500",
     icon: Rocket,
   },
@@ -718,16 +718,15 @@ export default function FreeAppsDaily() {
 
                   <div className="border-t border-white/10 pt-4 space-y-2 mb-5">
                     <div className="flex items-center gap-2 text-xs">
-                      <DollarSign size={12} className="text-neutral-400" />
-                      <span className="text-neutral-400">License:</span>
-                      <span className="font-bold text-white">{app.price}</span>
+                      <CheckCircle2 size={12} className="text-emerald-400" />
+                      <span className="font-semibold text-neutral-200">{app.ownership}</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <TrendingUp size={12} className="text-neutral-400" />
-                      <span className="text-neutral-400">Upside:</span>
-                      <span className="font-bold text-white">{app.margin}</span>
+                      <DollarSign size={12} className="text-neutral-400" />
+                      <span className="font-bold text-white">{app.price}</span>
                     </div>
                   </div>
+
 
                   <button className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
                     Get Licensing Details <ArrowRight size={14} />
