@@ -237,11 +237,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       </section>
 
       {/* WHAT'S INCLUDED */}
-      <section className="border-t border-white/5 py-24">
+      <section className="bg-neutral-50 text-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">What's Included</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize text-neutral-950">
               Everything to launch <br />
               a real software business.
             </h2>
@@ -250,18 +250,19 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {INCLUDED.map(f => {
               const I = f.icon;
               return (
-                <div key={f.title} className="group rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 p-6 transition-all">
-                  <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+                <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-md p-6 transition-all">
+                  <div className="w-11 h-11 rounded-xl bg-neutral-900 flex items-center justify-center mb-5">
                     <I size={18} className="text-white" />
                   </div>
-                  <h3 className="font-bold text-white mb-1.5">{f.title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{f.desc}</p>
+                  <h3 className="font-bold text-neutral-950 mb-1.5">{f.title}</h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{f.desc}</p>
                 </div>
               );
             })}
           </div>
         </div>
       </section>
+
 
       {/* WHO THIS IS FOR */}
       <section className="border-t border-white/5 py-24 bg-neutral-900/50">
