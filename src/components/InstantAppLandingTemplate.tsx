@@ -286,7 +286,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       {/* BUSINESS MODELS */}
       <section className="border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="max-w-2xl mb-12">
+          <div className="mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Business Model</p>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight capitalize whitespace-nowrap">How people use this platform.</h2>
           </div>
