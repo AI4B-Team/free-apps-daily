@@ -743,10 +743,10 @@ export default function FreeAppsDaily() {
                   </div>
 
 
-                  <button className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
+                  <span className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 group-hover:bg-neutral-200 transition-colors">
                     Get Licensing Details <ArrowRight size={14} />
-                  </button>
-                </div>
+                  </span>
+                </Link>
               );
             })}
           </div>
