@@ -287,7 +287,7 @@ export default function FreeAppsDaily() {
             aria-label="Search Apps"
           >
             {filterOpen ? <X size={15} /> : <Search size={15} />}
-            <span className="text-sm flex-1 text-left truncate">Search by app name, feature or use case</span>
+            <span className="text-sm flex-1 text-left truncate">Search apps</span>
             <ChevronDown size={13} className={`transition-transform ${filterOpen ? "rotate-180" : ""}`} />
           </button>
           <button
