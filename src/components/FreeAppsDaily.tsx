@@ -148,10 +148,45 @@ export default function FreeAppsDaily() {
   const [modalApp, setModalApp]         = useState<App | null>(null);
   const [email, setEmail]               = useState("");
   const [emailError, setEmailError]     = useState(false);
-  const [unlocked, setUnlocked]         = useState<number[]>([]);
+  const [unlocked, setUnlocked]         = useState<string[]>([]);
   const [time, setTime]                 = useState({ h: 11, m: 42, s: 8 });
   const industryRef                     = useRef<HTMLDivElement | null>(null);
   const heroIndustryRef                 = useRef<HTMLDivElement | null>(null);
+
+  const fetchApps = useServerFn(fetchTodaysApps);
+  const subscribeFn = useServerFn(subscribe);
+  const claimFn = useServerFn(claimApp);
+
+  const { data: APPS = [] } = useQuery({
+    queryKey: ["apps", "today"],
+    queryFn: async (): Promise<App[]> => {
+      const rows = await fetchApps();
+      return rows.map(r => ({
+        id: r.id,
+        name: r.name,
+        cat: r.category,
+        emoji: r.emoji,
+        offer: r.offer,
+        value: Math.round(r.value_cents / 100),
+        claimed: r.claimed_today,
+        featured: r.featured,
+        ourPick: r.our_pick,
+        badges: r.badges as BadgeKind[],
+        desc: r.description,
+      }));
+    },
+    staleTime: 60_000,
+  });
+
+  const subscribeMutation = useMutation({
+    mutationFn: (vars: { email: string; industry: string; source: string }) =>
+      subscribeFn({ data: vars }),
+  });
+
+  const claimMutation = useMutation({
+    mutationFn: (vars: { email: string; app_id: string }) =>
+      claimFn({ data: vars }),
+  });
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -198,22 +233,34 @@ export default function FreeAppsDaily() {
 
   const featured = filtered.find(a => a.featured);
   const rest      = filtered.filter(a => !a.featured);
-  const isUnlocked = (id: number) => unlocked.includes(id);
+  const isUnlocked = (id: string) => unlocked.includes(id);
 
   function openModal(app: App) { setModalApp(app); setEmail(""); setEmailError(false); }
 
-  function claim() {
+  async function claim() {
     if (!email || !email.includes("@")) { setEmailError(true); return; }
     if (!modalApp) return;
-    setUnlocked(prev => [...prev, modalApp.id]);
-    setModalApp(null);
+    try {
+      const res = await claimMutation.mutateAsync({ email, app_id: modalApp.id });
+      setUnlocked(prev => [...prev, modalApp.id]);
+      setModalApp(null);
+      if (res.affiliate_url) window.open(res.affiliate_url, "_blank", "noopener,noreferrer");
+    } catch {
+      setEmailError(true);
+    }
   }
 
-  function submitHero() {
+  async function submitHero() {
     if (!heroEmail || !heroEmail.includes("@")) { setHeroError(true); return; }
-    setHeroSubmitted(true);
-    setHeroError(false);
+    try {
+      await subscribeMutation.mutateAsync({ email: heroEmail, industry: activeIndustry.value, source: "hero" });
+      setHeroSubmitted(true);
+      setHeroError(false);
+    } catch {
+      setHeroError(true);
+    }
   }
+
 
   return (
     <div className="min-h-screen bg-white text-neutral-900" style={{ fontFamily: "'Inter', sans-serif" }}>
