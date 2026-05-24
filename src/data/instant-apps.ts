@@ -64,6 +64,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $2,997",
     ownership: "Full Resell Rights Included",
     accent: "from-red-500 to-orange-500",
+    palette: ["bg-red-500", "bg-orange-500", "bg-amber-500", "bg-rose-500", "bg-yellow-500"],
     icon: Sparkles,
     headline: "Launch your own AI content company",
     subheadline: "Launch a fully-branded AI-powered content platform under your own name, pricing, and domain in minutes instead of years.",
