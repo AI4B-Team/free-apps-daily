@@ -299,11 +299,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Built for operators who want to own, not rent.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {app.audience.map(a => {
+            {app.audience.map((a, idx) => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
                 <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${bgSolid} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
                     <I size={18} className="text-white" />
                   </div>
                   <div className="text-sm font-semibold text-neutral-200">{a}</div>
