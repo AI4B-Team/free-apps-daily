@@ -250,8 +250,8 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {INCLUDED.map(f => {
               const I = f.icon;
               return (
-                <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-md p-6 transition-all">
-                  <div className="w-11 h-11 rounded-xl bg-neutral-900 flex items-center justify-center mb-5">
+                <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-lg p-6 transition-all">
+                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${app.accent} flex items-center justify-center mb-5 shadow-md`}>
                     <I size={18} className="text-white" />
                   </div>
                   <h3 className="font-bold text-neutral-950 mb-1.5">{f.title}</h3>
