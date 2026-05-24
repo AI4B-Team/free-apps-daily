@@ -104,14 +104,14 @@ export const INSTANT_APPS: InstantApp[] = [
     ownership: "Launch Under Your Brand",
     accent: "from-indigo-500 to-purple-600",
     icon: Layers,
-    headline: "Own An AI CRM Built For Real Estate Investors",
+    headline: "Own an AI CRM built for real estate investors",
     subheadline: "A complete white-label CRM you can launch under your brand and sell to investors, agents, and wholesalers in any market.",
     hero: {
       eyebrow: "AI CRM · Real Estate",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
     },
     opportunity: {
-      title: "Stop Renting Software. Own It.",
+      title: "Stop renting software. Own it.",
       body: "Investor CRMs charge $97–$497 per month per seat. With Real Elite, you become the platform — not the customer.",
       points: [
         "Own a full investor CRM",
