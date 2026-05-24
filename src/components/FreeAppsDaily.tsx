@@ -298,7 +298,7 @@ export default function FreeAppsDaily() {
                 alt="Entrepreneur celebrating free AI app access on her laptop"
                 width={1024}
                 height={1024}
-                className="relative z-10 max-h-[480px] w-auto object-contain mix-blend-multiply"
+                className="relative z-10 max-h-[480px] w-auto object-contain drop-shadow-xl"
               />
 
               {/* Floating: REVVEN — top left */}
