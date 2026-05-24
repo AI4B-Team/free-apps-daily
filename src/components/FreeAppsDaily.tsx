@@ -642,24 +642,88 @@ export default function FreeAppsDaily() {
           )}
         </section>
 
-        <section className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-red-200 bg-red-50 hover:bg-red-100 rounded-2xl p-6 cursor-pointer transition-colors group">
-            <span className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2 block">Creators & Agencies</span>
-            <h3 className="text-base font-bold mb-2 text-neutral-900">Create. Automate. Monetize.</h3>
-            <p className="text-sm text-neutral-500 leading-relaxed mb-4">REVVEN gives you AI content creation, brand automation, and a full business suite — all in one platform.</p>
-            <div className="flex items-center gap-1 text-sm font-bold text-red-600 group-hover:gap-2.5 transition-all">
-              <span>Explore REVVEN</span><ArrowRight size={14} />
+      </div>
+
+      {/* ── LAUNCH YOUR OWN AI BUSINESS (Premium Dark) ── */}
+      <section className="relative bg-neutral-950 text-white overflow-hidden mt-14">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.15),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(99,102,241,0.18),transparent_55%)] pointer-events-none" />
+
+        <div className="relative max-w-6xl mx-auto px-8 py-20">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-red-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 backdrop-blur">
+              <Rocket size={11} />
+              For Founders, Operators & Agencies
             </div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
+              Don't Just Use AI Apps.<br />
+              <span className="bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+                Launch Your Own AI Business.
+              </span>
+            </h2>
+            <p className="text-base text-neutral-400 leading-relaxed">
+              Stop renting tools. Own them. Our white-label AI platforms let you launch a real software business —
+              your brand, your pricing, 100% of the revenue.
+            </p>
           </div>
-          <div className="border border-neutral-200 bg-neutral-50 hover:bg-neutral-100 rounded-2xl p-6 cursor-pointer transition-colors group">
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2 block">Real Estate Investors</span>
-            <h3 className="text-base font-bold mb-2 text-neutral-900">Find. Analyze. Close.</h3>
-            <p className="text-sm text-neutral-500 leading-relaxed mb-4">Real Elite is the AI CRM built for serious investors — automated scoring, deal analysis, and bulk offers.</p>
-            <div className="flex items-center gap-1 text-sm font-bold text-neutral-800 group-hover:gap-2.5 transition-all">
-              <span>Explore Real Elite</span><ArrowRight size={14} />
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+            {OWNED_APPS.map(app => {
+              const Icon = app.icon;
+              return (
+                <div
+                  key={app.name}
+                  className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-500/10 backdrop-blur-sm"
+                >
+                  <div className={`absolute -top-px left-6 right-6 h-px bg-gradient-to-r ${app.accent} opacity-60`} />
+
+                  <div className="flex items-start justify-between mb-5">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.accent} flex items-center justify-center shadow-lg`}>
+                      <Icon size={24} className="text-white" />
+                    </div>
+                    <span className="text-3xl">{app.emoji}</span>
+                  </div>
+
+                  <h3 className="text-2xl font-black mb-1.5 text-white">{app.name}</h3>
+                  <p className="text-sm font-semibold text-neutral-300 mb-3 leading-snug">{app.tagline}</p>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-5 flex-1">{app.desc}</p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {app.badges.map(b => <TypeBadge key={b} kind={b} dark />)}
+                  </div>
+
+                  <div className="border-t border-white/10 pt-4 space-y-2 mb-5">
+                    <div className="flex items-center gap-2 text-xs">
+                      <DollarSign size={12} className="text-emerald-400" />
+                      <span className="text-neutral-400">License:</span>
+                      <span className="font-bold text-white">{app.price}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <TrendingUp size={12} className="text-emerald-400" />
+                      <span className="text-neutral-400">Upside:</span>
+                      <span className="font-bold text-white">{app.margin}</span>
+                    </div>
+                  </div>
+
+                  <button className={`w-full bg-gradient-to-r ${app.accent} text-white text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg`}>
+                    Get Licensing Details <ArrowRight size={14} />
+                  </button>
+                </div>
+              );
+            })}
           </div>
-        </section>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-500">
+            <div className="flex items-center gap-1.5"><Shield size={12} className="text-emerald-400" /> Source code included</div>
+            <div className="w-px h-3 bg-white/10" />
+            <div className="flex items-center gap-1.5"><Layers size={12} className="text-indigo-400" /> Full white-label rights</div>
+            <div className="w-px h-3 bg-white/10" />
+            <div className="flex items-center gap-1.5"><Sparkles size={12} className="text-amber-400" /> Launch in under 14 days</div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-8 py-10">
 
         <section className="mt-8 bg-black rounded-2xl p-10 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
