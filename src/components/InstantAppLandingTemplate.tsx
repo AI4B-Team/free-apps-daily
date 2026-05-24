@@ -250,8 +250,8 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {INCLUDED.map(f => {
               const I = f.icon;
               return (
-                <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-md p-6 transition-all">
-                  <div className="w-11 h-11 rounded-xl bg-neutral-900 flex items-center justify-center mb-5">
+                <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-lg p-6 transition-all">
+                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${app.accent} flex items-center justify-center mb-5 shadow-md`}>
                     <I size={18} className="text-white" />
                   </div>
                   <h3 className="font-bold text-neutral-950 mb-1.5">{f.title}</h3>
@@ -275,8 +275,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {app.audience.map(a => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
-                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/25 transition-colors">
-                  <I size={20} className="text-white mx-auto mb-3" />
+                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                    <I size={18} className="text-white" />
+                  </div>
                   <div className="text-sm font-semibold text-neutral-200">{a}</div>
                 </div>
               );
@@ -294,8 +296,9 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {app.businessModels.map((m, i) => (
-              <div key={m.title} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all">
-                <div className="text-xs font-mono text-neutral-500 mb-3">0{i + 1}</div>
+              <div key={m.title} className="relative rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all overflow-hidden">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${app.accent}`} />
+                <div className={`text-xs font-mono font-bold mb-3 bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>0{i + 1}</div>
                 <h3 className="font-bold text-neutral-950 mb-2">{m.title}</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">{m.desc}</p>
               </div>
@@ -316,8 +319,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {CUSTOMIZATION.map(c => {
               const I = c.icon;
               return (
-                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center">
-                  <I size={18} className="text-white mx-auto mb-3" />
+                <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                    <I size={16} className="text-white" />
+                  </div>
                   <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
                 </div>
               );
@@ -337,7 +342,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {app.metrics.map(m => (
               <div key={m.label} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center">
-                <div className="text-4xl font-black tracking-tight text-neutral-950">{m.value}</div>
+                <div className={`text-4xl font-black tracking-tight bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>{m.value}</div>
                 <div className="text-xs text-neutral-500 tracking-widest mt-2">{m.label}</div>
               </div>
             ))}
