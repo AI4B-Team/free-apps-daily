@@ -103,15 +103,19 @@ function MockPhone({ accent }: { accent: string }) {
   );
 }
 
+const SOLID_MAP: Record<string, { bg: string; text: string }> = {
+  "from-red-500 to-orange-500":      { bg: "bg-red-500",     text: "text-red-500" },
+  "from-indigo-500 to-purple-600":   { bg: "bg-indigo-500",  text: "text-indigo-500" },
+  "from-emerald-500 to-teal-500":    { bg: "bg-emerald-500", text: "text-emerald-500" },
+};
+
 export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) {
   const Icon = app.icon;
-  // Derive a solid brand color from the accent gradient (e.g. "from-red-500 to-orange-500" -> "red-500")
-  const solidColor = app.accent.match(/from-([a-z]+-\d+)/)?.[1] ?? "neutral-900";
-  const bgSolid = `bg-${solidColor}`;
-  const textSolid = `text-${solidColor}`;
+  const { bg: bgSolid, text: textSolid } = SOLID_MAP[app.accent] ?? { bg: "bg-neutral-900", text: "text-neutral-900" };
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
+
 
       {/* NAV */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-neutral-950/70 border-b border-white/5">
