@@ -690,9 +690,9 @@ export default function FreeAppsDaily() {
                 Launch Your Own AI Business.
               </span>
             </h2>
-            <p className="text-base text-neutral-400 leading-relaxed">
-              Stop renting tools. Own them. Our white-label AI platforms let you launch a real software business —
-              your brand, your pricing, 100% of the revenue.
+            <p className="text-sm md:text-base text-neutral-400 leading-relaxed">
+              <span className="block whitespace-nowrap">Stop renting tools. Own them. Our white-label AI platforms let you launch a real software business.</span>
+              <span className="block">Your brand. Your pricing. 100% of the revenue.</span>
             </p>
           </div>
 
