@@ -286,23 +286,24 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       </section>
 
       {/* BUSINESS MODELS */}
-      <section className="border-t border-white/5 py-24">
+      <section className="bg-white text-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Business Model</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight capitalize whitespace-nowrap">How people use this platform.</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight capitalize whitespace-nowrap text-neutral-950">How people use this platform.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {app.businessModels.map((m, i) => (
-              <div key={m.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-white/25 transition-colors">
+              <div key={m.title} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all">
                 <div className="text-xs font-mono text-neutral-500 mb-3">0{i + 1}</div>
-                <h3 className="font-bold text-white mb-2">{m.title}</h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">{m.desc}</p>
+                <h3 className="font-bold text-neutral-950 mb-2">{m.title}</h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">{m.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* CUSTOMIZATION */}
       <section className="border-t border-white/5 py-24 bg-gradient-to-b from-neutral-900 to-neutral-950">
