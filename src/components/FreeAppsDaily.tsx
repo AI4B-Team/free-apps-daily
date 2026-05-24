@@ -443,14 +443,16 @@ export default function FreeAppsDaily() {
       </section>
 
       {/* ── Trust / Logo Bar ── */}
-      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8 overflow-hidden">
-        <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
-          {TRUST_LOGOS.map(logo => (
+      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 overflow-hidden relative group">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+          {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, i) => (
             <img
-              key={logo.slug}
+              key={`${logo.slug}-${i}`}
               src={`https://cdn.simpleicons.org/${logo.slug}/9ca3af`}
               alt={logo.name}
-              className="h-7 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale"
+              className="h-7 w-auto mx-8 md:mx-10 opacity-70 hover:opacity-100 transition-opacity grayscale shrink-0"
               loading="lazy"
             />
           ))}
