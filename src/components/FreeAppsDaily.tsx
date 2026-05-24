@@ -451,9 +451,9 @@ export default function FreeAppsDaily() {
           {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, i) => (
             <img
               key={`${logo.slug}-${i}`}
-              src={`https://cdn.simpleicons.org/${logo.slug}/9ca3af`}
+              src={`https://cdn.simpleicons.org/${logo.slug}`}
               alt={logo.name}
-              className="h-7 w-auto mx-8 md:mx-10 opacity-70 hover:opacity-100 transition-opacity grayscale shrink-0"
+              className="h-7 w-auto mx-8 md:mx-10 opacity-90 hover:opacity-100 transition-opacity shrink-0"
               loading="lazy"
             />
           ))}
