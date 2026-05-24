@@ -366,70 +366,11 @@ export default function FreeAppsDaily() {
           </div>
         </div>
 
-        {/* ── Hero Search Bar (overlaps hero + trust band) ── */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-[calc(100%-4rem)] max-w-6xl px-4 z-30">
-          <form
-            onSubmit={handleSearch}
-            className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-2xl flex items-center gap-3"
-          >
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setIndustryOpen(o => !o)}
-                className="flex items-center gap-2 text-sm text-neutral-700 font-medium border-r border-neutral-200 pr-4 py-1 hover:text-red-600 transition-colors min-w-max"
-              >
-                <Filter size={14} className="text-neutral-400" />
-                {activeIndustry.label}
-                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
-              </button>
-              {industryOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
-                  {INDUSTRIES.map(ind => (
-                    <button
-                      key={ind.value}
-                      type="button"
-                      onClick={() => selectIndustry(ind)}
-                      className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                        activeIndustry.value === ind.value
-                          ? "text-red-600 font-semibold bg-red-50"
-                          : "text-neutral-600 hover:bg-neutral-50"
-                      }`}
-                    >
-                      {ind.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="flex-1 flex items-center gap-2 px-2">
-              <Search size={15} className="text-neutral-400 flex-shrink-0" />
-              <input
-                type="text"
-                placeholder="Search by app name, feature, or use case..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                className="flex-1 text-sm text-neutral-900 placeholder-neutral-400 outline-none bg-transparent"
-              />
-              {searchQuery && (
-                <button type="button" onClick={() => { setSearchQuery(""); setLiveQuery(""); }} className="text-neutral-400 hover:text-neutral-700">
-                  <X size={13} />
-                </button>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold px-7 py-3 rounded-xl transition-colors whitespace-nowrap"
-            >
-              Search
-            </button>
-          </form>
-        </div>
       </section>
 
-      {/* ── Trust / Logo Bar (search bar floats on this top border) ── */}
-      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8">
+      {/* ── Trust / Logo Bar ── */}
+      <div className="border-b border-neutral-100 bg-white pt-10 pb-10 px-8">
+
 
         <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
           {TRUST_LOGOS.map(logo => (
