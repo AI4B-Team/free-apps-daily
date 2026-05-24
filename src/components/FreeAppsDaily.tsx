@@ -20,13 +20,34 @@ const CATEGORIES = ["All", "Video", "Content", "Real Estate", "Sales", "Producti
 
 // Real company logos via simple-icons CDN (monochrome SVG)
 const TRUST_LOGOS = [
-  { name: "Google",  slug: "google" },
-  { name: "Notion",  slug: "notion" },
-  { name: "Shopify", slug: "shopify" },
-  { name: "Spotify", slug: "spotify" },
-  { name: "Stripe",  slug: "stripe" },
-  { name: "Slack",   slug: "slack" },
-  { name: "HubSpot", slug: "hubspot" },
+  { name: "Google",     slug: "google" },
+  { name: "Notion",     slug: "notion" },
+  { name: "Shopify",    slug: "shopify" },
+  { name: "Spotify",    slug: "spotify" },
+  { name: "Stripe",     slug: "stripe" },
+  { name: "Slack",      slug: "slack" },
+  { name: "HubSpot",    slug: "hubspot" },
+  { name: "Figma",      slug: "figma" },
+  { name: "Airbnb",     slug: "airbnb" },
+  { name: "Netflix",    slug: "netflix" },
+  { name: "Adobe",      slug: "adobe" },
+  { name: "Amazon",     slug: "amazon" },
+  { name: "Meta",       slug: "meta" },
+  { name: "Microsoft",  slug: "microsoft" },
+  { name: "Uber",       slug: "uber" },
+  { name: "Tesla",      slug: "tesla" },
+  { name: "Salesforce", slug: "salesforce" },
+  { name: "Zoom",       slug: "zoom" },
+  { name: "Dropbox",    slug: "dropbox" },
+  { name: "Atlassian",  slug: "atlassian" },
+  { name: "Asana",      slug: "asana" },
+  { name: "Canva",      slug: "canva" },
+  { name: "Trello",     slug: "trello" },
+  { name: "GitHub",     slug: "github" },
+  { name: "Linear",     slug: "linear" },
+  { name: "Intercom",   slug: "intercom" },
+  { name: "Mailchimp",  slug: "mailchimp" },
+  { name: "Webflow",    slug: "webflow" },
 ];
 
 const APPS = [
@@ -422,14 +443,16 @@ export default function FreeAppsDaily() {
       </section>
 
       {/* ── Trust / Logo Bar ── */}
-      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 px-8 overflow-hidden">
-        <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
-          {TRUST_LOGOS.map(logo => (
+      <div className="border-t border-b border-neutral-200 bg-white pt-20 pb-10 overflow-hidden relative group">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+          {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, i) => (
             <img
-              key={logo.slug}
+              key={`${logo.slug}-${i}`}
               src={`https://cdn.simpleicons.org/${logo.slug}/9ca3af`}
               alt={logo.name}
-              className="h-7 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale"
+              className="h-7 w-auto mx-8 md:mx-10 opacity-70 hover:opacity-100 transition-opacity grayscale shrink-0"
               loading="lazy"
             />
           ))}
