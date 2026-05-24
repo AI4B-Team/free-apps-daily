@@ -141,9 +141,18 @@ export default function FreeAppsDaily() {
 
       {/* ── Nav ── */}
       <nav className="flex items-center justify-between px-8 py-4 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-4 h-4 rounded-full bg-red-600 animate-pulse" />
-          <span className="text-2xl md:text-3xl font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-4 h-4 rounded-full bg-red-600 animate-pulse" />
+            <span className="text-2xl md:text-3xl font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
+          </div>
+          <button
+            onClick={() => setFilterOpen(o => !o)}
+            className="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+            aria-label="Search Apps"
+          >
+            {filterOpen ? <X size={17} /> : <Search size={17} />}
+          </button>
         </div>
         <div className="flex items-center gap-6">
           <div className="relative hidden md:block" ref={industryRef}>
@@ -173,14 +182,6 @@ export default function FreeAppsDaily() {
               </div>
             )}
           </div>
-
-          <button
-            onClick={() => setFilterOpen(o => !o)}
-            className="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
-            aria-label="Search Apps"
-          >
-            {filterOpen ? <X size={17} /> : <Search size={17} />}
-          </button>
 
           <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             <Bell size={12} />
