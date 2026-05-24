@@ -547,10 +547,11 @@ export default function FreeAppsDaily() {
                     <p className="text-sm text-neutral-500 leading-relaxed">{featured.desc}</p>
                   </div>
                 </div>
-                <div className="flex gap-2 mb-5 flex-wrap">
-                  <span className="text-xs bg-neutral-100 text-neutral-500 px-3 py-1 rounded-full border border-neutral-200">{featured.cat}</span>
-                  <span className="text-xs border border-red-200 bg-red-50 text-red-600 px-3 py-1 rounded-full font-semibold">{featured.offer}</span>
-                  <span className="text-xs bg-neutral-100 text-neutral-400 px-3 py-1 rounded-full border border-neutral-200">Normally ${featured.value}/mo</span>
+                <div className="flex gap-1.5 mb-5 flex-wrap items-center">
+                  {featured.badges.map(b => <TypeBadge key={b} kind={b} />)}
+                  <span className="text-xs bg-neutral-100 text-neutral-500 px-2.5 py-0.5 rounded-full border border-neutral-200">{featured.cat}</span>
+                  <span className="text-xs border border-neutral-200 bg-neutral-50 text-neutral-500 px-2.5 py-0.5 rounded-full font-medium">{featured.offer}</span>
+                  <span className="text-xs bg-neutral-100 text-neutral-400 px-2.5 py-0.5 rounded-full border border-neutral-200">Normally ${featured.value}/mo</span>
                 </div>
                 {isUnlocked(featured.id) ? (
                   <div className="w-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
