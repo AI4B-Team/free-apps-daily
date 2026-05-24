@@ -4,6 +4,7 @@ import {
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
   Filter, ChevronDown, TrendingUp, Users, Gift
 } from "lucide-react";
+import heroWoman from "@/assets/hero-woman.png";
 
 const INDUSTRIES = [
   { label: "All Industries", value: "All" },
@@ -17,8 +18,15 @@ const INDUSTRIES = [
 
 const CATEGORIES = ["All", "Video", "Content", "Real Estate", "Sales", "Productivity", "Health", "Finance"];
 
+// Real company logos via simple-icons CDN (monochrome SVG)
 const TRUST_LOGOS = [
-  "ChatGPT", "Midjourney", "Descript", "Copy.ai", "Gamma", "Perplexity", "ElevenLabs", "Zapier"
+  { name: "Google",  slug: "google" },
+  { name: "Notion",  slug: "notion" },
+  { name: "Shopify", slug: "shopify" },
+  { name: "Spotify", slug: "spotify" },
+  { name: "Stripe",  slug: "stripe" },
+  { name: "Slack",   slug: "slack" },
+  { name: "HubSpot", slug: "hubspot" },
 ];
 
 const APPS = [
@@ -215,8 +223,8 @@ export default function FreeAppsDaily() {
       )}
 
       {/* ── HERO SECTION ── */}
-      <section className="bg-gradient-to-br from-slate-50 via-white to-red-50 px-8 pt-16 pb-0 overflow-hidden">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-red-50 px-8 pt-16 pb-32 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             <div>
@@ -281,60 +289,72 @@ export default function FreeAppsDaily() {
               </div>
             </div>
 
-            <div className="relative h-80 flex items-center justify-center select-none">
-              <div className="absolute w-72 h-72 rounded-full bg-red-50 opacity-60" style={{ filter: "blur(40px)" }} />
+            {/* ── Hero Image + Floating Cards ── */}
+            <div className="relative h-[480px] flex items-center justify-center select-none">
+              <div className="absolute w-80 h-80 rounded-full bg-red-100 opacity-50" style={{ filter: "blur(60px)" }} />
 
-              <div className="relative z-10 bg-white border border-neutral-200 rounded-2xl p-4 shadow-xl w-56">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-11 h-11 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-2xl flex-shrink-0">🎬</div>
-                  <div>
-                    <div className="text-sm font-bold text-neutral-900">Descript Pro</div>
-                    <div className="text-xs text-red-500 font-semibold">14-Day Pro Free</div>
-                  </div>
+              <img
+                src={heroWoman}
+                alt="Entrepreneur celebrating free AI app access on her laptop"
+                width={1024}
+                height={1024}
+                className="relative z-10 max-h-[480px] w-auto object-contain drop-shadow-xl"
+              />
+
+              {/* Floating: REVVEN — top left */}
+              <div className="absolute top-6 left-0 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                  <Zap size={16} className="text-white fill-white" />
                 </div>
-                <div className="text-xs text-neutral-400 mb-3 flex items-center gap-1">
-                  <Flame size={10} className="text-red-500" /> 847 Claimed Today
+                <div>
+                  <div className="text-xs font-black text-neutral-900">REVVEN</div>
+                  <div className="text-[11px] text-green-600 font-bold">Free Access</div>
                 </div>
-                <div className="bg-red-600 text-white text-xs font-bold py-2 rounded-lg text-center">Unlock Free Access</div>
               </div>
 
-              <div className="absolute top-6 right-4 bg-white border border-neutral-200 rounded-xl px-4 py-3 shadow-lg">
-                <div className="text-lg font-black text-red-600">47K+</div>
-                <div className="text-xs text-neutral-400 font-medium">Subscribers</div>
+              {/* Floating: 47K Subscribers — top right */}
+              <div className="absolute top-2 right-0 z-20 bg-white border border-neutral-200 rounded-2xl px-4 py-3 shadow-xl">
+                <div className="text-lg font-black text-red-600 leading-none">47K+</div>
+                <div className="text-[11px] text-neutral-500 font-semibold mt-1">Subscribers</div>
               </div>
 
-              <div className="absolute bottom-10 left-2 bg-white border border-neutral-200 rounded-xl px-3 py-2.5 shadow-lg flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-red-50 flex items-center justify-center">
-                  <Gift size={14} className="text-red-600" />
+              {/* Floating: Descript Pro — mid right */}
+              <div className="absolute top-1/2 -right-2 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center text-lg">🎬</div>
+                <div>
+                  <div className="text-xs font-black text-neutral-900">Descript Pro</div>
+                  <div className="text-[11px] text-red-500 font-bold">14-Day Free</div>
+                </div>
+              </div>
+
+              {/* Floating: 12 Apps Free — bottom left */}
+              <div className="absolute bottom-16 left-2 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                  <Gift size={16} className="text-red-600" />
                 </div>
                 <div>
                   <div className="text-xs font-black text-neutral-900">12 Apps Free</div>
-                  <div className="text-xs text-neutral-400">Today Only</div>
+                  <div className="text-[11px] text-neutral-500 font-semibold">Today Only</div>
                 </div>
               </div>
 
-              <div className="absolute top-10 left-0 bg-white border border-neutral-200 rounded-xl px-3 py-2 shadow-md flex items-center gap-2">
-                <span className="text-base">⚡</span>
+              {/* Floating: Real Elite — bottom right */}
+              <div className="absolute bottom-8 right-4 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
+                <span className="text-lg">🏠</span>
                 <div>
-                  <div className="text-xs font-bold text-neutral-900">REVVEN</div>
-                  <div className="text-xs text-green-600 font-medium">Free Access</div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-4 right-6 bg-white border border-neutral-200 rounded-xl px-3 py-2 shadow-md flex items-center gap-2">
-                <span className="text-base">🏠</span>
-                <div>
-                  <div className="text-xs font-bold text-neutral-900">Real Elite</div>
-                  <div className="text-xs text-green-600 font-medium">Free Trial</div>
+                  <div className="text-xs font-black text-neutral-900">Real Elite</div>
+                  <div className="text-[11px] text-green-600 font-bold">Free Trial</div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* ── Hero Search Bar ── */}
+        {/* ── Hero Search Bar (overlaps hero + trust band) ── */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-[calc(100%-4rem)] max-w-6xl px-4 z-30">
           <form
             onSubmit={handleSearch}
-            className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-lg flex items-center gap-3 mt-10 -mb-px"
+            className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-2xl flex items-center gap-3"
           >
             <div className="relative">
               <button
@@ -393,11 +413,16 @@ export default function FreeAppsDaily() {
       </section>
 
       {/* ── Trust / Logo Bar ── */}
-      <div className="border-y border-neutral-100 bg-neutral-50 py-5 px-8 overflow-hidden">
-        <div className="max-w-5xl mx-auto flex items-center gap-2 flex-wrap justify-center">
-          <span className="text-xs text-neutral-400 font-medium mr-4 whitespace-nowrap">Featured Apps Include:</span>
+      <div className="border-b border-neutral-100 bg-white pt-20 pb-10 px-8 overflow-hidden">
+        <div className="max-w-5xl mx-auto flex items-center gap-8 md:gap-14 flex-wrap justify-center">
           {TRUST_LOGOS.map(logo => (
-            <span key={logo} className="text-sm font-semibold text-neutral-300 px-4">{logo}</span>
+            <img
+              key={logo.slug}
+              src={`https://cdn.simpleicons.org/${logo.slug}/9ca3af`}
+              alt={logo.name}
+              className="h-7 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale"
+              loading="lazy"
+            />
           ))}
         </div>
       </div>
