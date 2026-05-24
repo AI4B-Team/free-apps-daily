@@ -120,11 +120,8 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
     return [m[1], m[2]];
   };
 
-  // Rotating palette so icon tiles don't all share one color
-  const ICON_PALETTE = [
-    "bg-indigo-500", "bg-rose-500", "bg-emerald-500", "bg-amber-500",
-    "bg-sky-500", "bg-fuchsia-500", "bg-orange-500", "bg-teal-500",
-  ];
+  // Per-app icon palette so each landing page has its own color identity
+  const ICON_PALETTE = app.palette;
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
 
