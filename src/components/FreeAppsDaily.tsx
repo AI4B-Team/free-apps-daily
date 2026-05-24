@@ -592,6 +592,45 @@ export default function FreeAppsDaily() {
                   </button>
                 )}
                 <p className="text-xs text-neutral-400 text-center mt-2">No Credit Card · Resets At Midnight</p>
+
+                {/* What You Get */}
+                <div className="mt-6 pt-6 border-t border-neutral-100">
+                  <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">What You Get</p>
+                  <div className="grid grid-cols-2 gap-2.5">
+                    {[
+                      { icon: Crown, label: "Premium Access" },
+                      { icon: Sparkles, label: "All AI Features" },
+                      { icon: Zap, label: "Instant Activation" },
+                      { icon: Shield, label: "No Credit Card" },
+                    ].map(({ icon: I, label }) => (
+                      <div key={label} className="flex items-center gap-2 bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-2.5">
+                        <I size={14} className="text-red-600 shrink-0" />
+                        <span className="text-xs font-semibold text-neutral-700">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Popular Use Cases */}
+                <div className="mt-5">
+                  <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Popular With</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Creators", "Podcasters", "Coaches", "Agencies", "Marketers"].map(tag => (
+                      <span key={tag} className="text-xs font-medium text-neutral-600 bg-white border border-neutral-200 px-2.5 py-1 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Trending Feedback */}
+                <div className="mt-5 bg-gradient-to-br from-red-50 to-orange-50 border border-red-100 rounded-xl p-4">
+                  <div className="flex items-center gap-1 mb-1.5">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={11} className="text-amber-500 fill-amber-500" />)}
+                    <span className="text-xs font-semibold text-neutral-500 ml-1">Trending Feedback</span>
+                  </div>
+                  <p className="text-sm text-neutral-700 italic leading-snug">"Cut my editing time in half — the AI cleanup is unreal."</p>
+                  <p className="text-xs text-neutral-500 mt-1.5">— Maya R., YouTube Creator</p>
+                </div>
+
               </div>
               <div className="flex flex-col gap-4">
                 <div className="border border-neutral-200 rounded-2xl p-5 bg-white shadow-sm">
