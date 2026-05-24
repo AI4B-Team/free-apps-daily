@@ -54,6 +54,7 @@ export default function FreeAppsDaily() {
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const [heroError, setHeroError]       = useState(false);
   const [industryOpen, setIndustryOpen] = useState(false);
+  const [heroIndustryOpen, setHeroIndustryOpen] = useState(false);
   const [activeCat, setActiveCat]       = useState("All");
   const [activeIndustry, setActiveIndustry] = useState<Industry>(INDUSTRIES[0]);
   const [searchQuery, setSearchQuery]   = useState("");
@@ -65,6 +66,7 @@ export default function FreeAppsDaily() {
   const [unlocked, setUnlocked]         = useState<number[]>([]);
   const [time, setTime]                 = useState({ h: 11, m: 42, s: 8 });
   const industryRef                     = useRef<HTMLDivElement | null>(null);
+  const heroIndustryRef                 = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -82,6 +84,7 @@ export default function FreeAppsDaily() {
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (industryRef.current && !industryRef.current.contains(e.target as Node)) setIndustryOpen(false);
+      if (heroIndustryRef.current && !heroIndustryRef.current.contains(e.target as Node)) setHeroIndustryOpen(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -93,6 +96,7 @@ export default function FreeAppsDaily() {
     setActiveIndustry(ind);
     setActiveCat(ind.value);
     setIndustryOpen(false);
+    setHeroIndustryOpen(false);
   }
 
   function handleSearch(e: React.FormEvent) {
@@ -360,17 +364,17 @@ export default function FreeAppsDaily() {
             onSubmit={handleSearch}
             className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-2xl flex items-center gap-3"
           >
-            <div className="relative">
+            <div className="relative" ref={heroIndustryRef}>
               <button
                 type="button"
-                onClick={() => setIndustryOpen(o => !o)}
+                onClick={() => setHeroIndustryOpen(o => !o)}
                 className="flex items-center gap-2 text-sm text-neutral-700 font-medium border-r border-neutral-200 pr-4 py-1 hover:text-red-600 transition-colors min-w-max"
               >
                 <Filter size={14} className="text-neutral-400" />
                 {activeIndustry.label}
-                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${heroIndustryOpen ? "rotate-180" : ""}`} />
               </button>
-              {industryOpen && (
+              {heroIndustryOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
                   {INDUSTRIES.map(ind => (
                     <button
