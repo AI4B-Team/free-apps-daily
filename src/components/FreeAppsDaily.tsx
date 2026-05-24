@@ -223,7 +223,7 @@ export default function FreeAppsDaily() {
       )}
 
       {/* ── HERO SECTION ── */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-red-50 px-8 pt-16 pb-8">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-red-50 px-8 pt-4 pb-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
