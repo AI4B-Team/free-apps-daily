@@ -198,7 +198,7 @@ export default function FreeAppsDaily() {
             )}
           </div>
 
-          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors whitespace-nowrap">
+          <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
             <Bell size={12} />
             Get Daily Drops
           </button>
