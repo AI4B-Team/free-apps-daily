@@ -312,11 +312,6 @@ export default function FreeAppsDaily() {
                 </div>
               </div>
 
-              {/* Floating: 47K Subscribers — top right */}
-              <div className="absolute top-2 right-0 z-20 bg-white border border-neutral-200 rounded-2xl px-4 py-3 shadow-xl">
-                <div className="text-lg font-black text-red-600 leading-none">47K+</div>
-                <div className="text-[11px] text-neutral-500 font-semibold mt-1">Subscribers</div>
-              </div>
 
               {/* Floating: Descript Pro — mid right */}
               <div className="absolute top-1/2 -right-2 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
