@@ -18,7 +18,7 @@ const INDUSTRIES = [
 
 const CATEGORIES = ["All", "Video", "Content", "Real Estate", "Sales", "Productivity", "Health", "Finance"];
 
-// Real company logos via simple-icons CDN (monochrome SVG)
+// Real company icons via Google's favicon service for accurate live brand assets
 const TRUST_LOGOS = [
   { name: "Google",     domain: "google.com" },
   { name: "Notion",     domain: "notion.so" },
@@ -451,9 +451,9 @@ export default function FreeAppsDaily() {
           {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, i) => (
             <img
               key={`${logo.domain}-${i}`}
-              src={`https://logo.clearbit.com/${logo.domain}`}
+              src={`https://www.google.com/s2/favicons?domain=${logo.domain}&sz=128`}
               alt={logo.name}
-              className="h-8 w-auto mx-8 md:mx-10 opacity-90 hover:opacity-100 transition-opacity shrink-0 object-contain"
+              className="h-12 w-12 mx-8 md:mx-10 opacity-95 hover:opacity-100 transition-opacity shrink-0 object-contain"
               loading="lazy"
             />
           ))}
