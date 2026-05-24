@@ -450,10 +450,10 @@ export default function FreeAppsDaily() {
         <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
           {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, i) => (
             <img
-              key={`${logo.slug}-${i}`}
-              src={`https://cdn.simpleicons.org/${logo.slug}`}
+              key={`${logo.domain}-${i}`}
+              src={`https://logo.clearbit.com/${logo.domain}`}
               alt={logo.name}
-              className="h-7 w-auto mx-8 md:mx-10 opacity-90 hover:opacity-100 transition-opacity shrink-0"
+              className="h-8 w-auto mx-8 md:mx-10 opacity-90 hover:opacity-100 transition-opacity shrink-0 object-contain"
               loading="lazy"
             />
           ))}
