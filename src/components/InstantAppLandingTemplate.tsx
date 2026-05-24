@@ -120,6 +120,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
     return [m[1], m[2]];
   };
 
+  // Rotating palette so icon tiles don't all share one color
+  const ICON_PALETTE = [
+    "bg-indigo-500", "bg-rose-500", "bg-emerald-500", "bg-amber-500",
+    "bg-sky-500", "bg-fuchsia-500", "bg-orange-500", "bg-teal-500",
+  ];
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
 
@@ -269,11 +274,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {INCLUDED.map(f => {
+            {INCLUDED.map((f, idx) => {
               const I = f.icon;
               return (
                 <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-lg p-6 transition-all">
-                  <div className={`w-11 h-11 rounded-xl ${bgSolid} flex items-center justify-center mb-5 shadow-md`}>
+                  <div className={`w-11 h-11 rounded-xl ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mb-5 shadow-md`}>
                     <I size={18} className="text-white" />
                   </div>
                   <h3 className="font-bold text-neutral-950 mb-1.5">{f.title}</h3>
@@ -294,11 +299,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Built for operators who want to own, not rent.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {app.audience.map(a => {
+            {app.audience.map((a, idx) => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
                 <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${bgSolid} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
                     <I size={18} className="text-white" />
                   </div>
                   <div className="text-sm font-semibold text-neutral-200">{a}</div>
@@ -338,11 +343,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Every pixel is yours to brand.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {CUSTOMIZATION.map(c => {
+            {CUSTOMIZATION.map((c, idx) => {
               const I = c.icon;
               return (
                 <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${bgSolid} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
                     <I size={16} className="text-white" />
                   </div>
                   <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
