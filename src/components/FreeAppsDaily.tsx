@@ -291,33 +291,6 @@ export default function FreeAppsDaily() {
           </button>
         </div>
         <div className="flex items-center gap-6">
-          <div className="relative hidden md:block" ref={industryRef}>
-            <button
-              onClick={() => setIndustryOpen(o => !o)}
-              className="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
-            >
-              <Filter size={13} />
-              {activeIndustry.label}
-              <ChevronDown size={13} className={`transition-transform ${industryOpen ? "rotate-180" : ""}`} />
-            </button>
-            {industryOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
-                {INDUSTRIES.map(ind => (
-                  <button
-                    key={ind.value}
-                    onClick={() => selectIndustry(ind)}
-                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                      activeIndustry.value === ind.value
-                        ? "text-red-600 font-semibold bg-red-50"
-                        : "text-neutral-600 hover:bg-neutral-50"
-                    }`}
-                  >
-                    {ind.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
 
           <button className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             <Bell size={12} />
