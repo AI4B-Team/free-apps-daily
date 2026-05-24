@@ -161,12 +161,12 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       </section>
 
       {/* DEMO */}
-      <section id="demo" className="border-t border-white/5 py-24">
+      <section id="demo" className="bg-white text-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">See It Live</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">A full platform, ready to brand.</h2>
-            <p className="mt-4 text-neutral-400">Dashboards, mobile, onboarding, and client portals — designed to ship under your name from day one.</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize text-neutral-950">A full platform, ready to brand.</h2>
+            <p className="mt-4 text-neutral-600">Dashboards, mobile, onboarding, and client portals — designed to ship under your name from day one.</p>
           </div>
 
           <div className="grid grid-cols-12 gap-6">
@@ -179,24 +179,24 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               <p className="text-xs text-neutral-500 text-center -mt-3">Native mobile experience</p>
             </div>
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-2">Onboarding Flow</div>
                 <div className="space-y-2 mt-4">
                   {[1, 2, 3, 4].map(i => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold">{i}</div>
-                      <div className="h-2 bg-white/10 rounded flex-1" />
+                      <div className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[10px] font-bold">{i}</div>
+                      <div className="h-2 bg-neutral-200 rounded flex-1" />
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Branding Customization</div>
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/10" />
-                  <div className="h-2 flex-1 bg-white/10 rounded" />
+                  <div className="w-8 h-8 rounded-lg bg-neutral-200" />
+                  <div className="h-2 flex-1 bg-neutral-200 rounded" />
                 </div>
                 <div className="flex gap-2 mt-4">
                   {["bg-red-500","bg-indigo-500","bg-emerald-500","bg-amber-500","bg-fuchsia-500"].map(c => (
@@ -206,18 +206,19 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               </div>
             </div>
             <div className="col-span-12 md:col-span-4">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
+              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 h-full">
                 <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Client-Facing Portal</div>
                 <div className="space-y-2">
-                  <div className="h-3 bg-white/10 rounded w-3/4" />
-                  <div className="h-3 bg-white/10 rounded w-1/2" />
-                  <div className="h-16 bg-white/5 rounded-lg mt-3 border border-white/10" />
+                  <div className="h-3 bg-neutral-200 rounded w-3/4" />
+                  <div className="h-3 bg-neutral-200 rounded w-1/2" />
+                  <div className="h-16 bg-white rounded-lg mt-3 border border-neutral-200" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* OPPORTUNITY */}
       <section className="border-t border-white/5 py-24 bg-gradient-to-b from-neutral-950 to-neutral-900">
