@@ -298,7 +298,7 @@ export default function FreeAppsDaily() {
                 alt="Entrepreneur celebrating free AI app access on her laptop"
                 width={1024}
                 height={1024}
-                className="relative z-10 max-h-[480px] w-auto object-contain drop-shadow-xl"
+                className="relative z-10 max-h-[480px] w-auto object-contain mix-blend-multiply"
               />
 
               {/* Floating: REVVEN — top left */}
@@ -320,7 +320,9 @@ export default function FreeAppsDaily() {
 
               {/* Floating: Descript Pro — mid right */}
               <div className="absolute top-1/2 -right-2 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center text-lg">🎬</div>
+                <div className="w-9 h-9 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center">
+                  <Star size={16} className="text-red-600 fill-red-600" />
+                </div>
                 <div>
                   <div className="text-xs font-black text-neutral-900">Descript Pro</div>
                   <div className="text-[11px] text-red-500 font-bold">14-Day Free</div>
@@ -340,7 +342,9 @@ export default function FreeAppsDaily() {
 
               {/* Floating: Real Elite — bottom right */}
               <div className="absolute bottom-8 right-4 z-20 bg-white border border-neutral-200 rounded-2xl px-3.5 py-2.5 shadow-xl flex items-center gap-2.5">
-                <span className="text-lg">🏠</span>
+                <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                  <Crown size={16} className="text-red-600" />
+                </div>
                 <div>
                   <div className="text-xs font-black text-neutral-900">Real Elite</div>
                   <div className="text-[11px] text-green-600 font-bold">Free Trial</div>
