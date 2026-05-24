@@ -64,7 +64,7 @@ export const INSTANT_APPS: InstantApp[] = [
     accent: "from-red-500 to-orange-500",
     icon: Sparkles,
     headline: "Launch your own AI content company",
-    subheadline: "Launch a fully-branded AI-powered content platform under your own name, pricing, and domain in days instead of years.",
+    subheadline: "Launch a fully-branded AI-powered content platform under your own name, pricing, and domain in minutes instead of years.",
     hero: {
       eyebrow: "AI Content Platform · White-Label",
       bullets: ["Full Resell Rights", "Your Branding", "Keep 100% Of Revenue", "No Coding Required"],
