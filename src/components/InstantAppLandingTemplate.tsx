@@ -351,7 +351,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {app.metrics.map(m => (
               <div key={m.label} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center">
-                <div className={`text-4xl font-black tracking-tight bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>{m.value}</div>
+                <div className={`text-4xl font-black tracking-tight ${textSolid}`}>{m.value}</div>
                 <div className="text-xs text-neutral-500 tracking-widest mt-2">{m.label}</div>
               </div>
             ))}
