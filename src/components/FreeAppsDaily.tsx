@@ -169,7 +169,7 @@ export default function FreeAppsDaily() {
           </div>
           <button
             onClick={() => setFilterOpen(o => !o)}
-            className="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+            className="p-2 rounded-lg border border-neutral-200 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 hover:border-neutral-300 transition-colors"
             aria-label="Search Apps"
           >
             {filterOpen ? <X size={17} /> : <Search size={17} />}
