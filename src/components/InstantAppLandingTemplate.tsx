@@ -164,7 +164,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section id="demo" className="border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">See It Live</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">See It Live</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">A full platform, ready to brand.</h2>
             <p className="mt-4 text-neutral-400">Dashboards, mobile, onboarding, and client portals — designed to ship under your name from day one.</p>
           </div>
@@ -180,7 +180,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             </div>
             <div className="col-span-12 md:col-span-4">
               <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
-                <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Onboarding Flow</div>
+                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-2">Onboarding Flow</div>
                 <div className="space-y-2 mt-4">
                   {[1, 2, 3, 4].map(i => (
                     <div key={i} className="flex items-center gap-3">
@@ -193,7 +193,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             </div>
             <div className="col-span-12 md:col-span-4">
               <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
-                <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-4">Branding Customization</div>
+                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Branding Customization</div>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-8 h-8 rounded-lg bg-white/10" />
                   <div className="h-2 flex-1 bg-white/10 rounded" />
@@ -207,7 +207,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             </div>
             <div className="col-span-12 md:col-span-4">
               <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 h-full">
-                <div className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-4">Client-Facing Portal</div>
+                <div className="text-xs font-bold tracking-widest text-neutral-500 mb-4">Client-Facing Portal</div>
                 <div className="space-y-2">
                   <div className="h-3 bg-white/10 rounded w-3/4" />
                   <div className="h-3 bg-white/10 rounded w-1/2" />
@@ -222,7 +222,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       {/* OPPORTUNITY */}
       <section className="border-t border-white/5 py-24 bg-gradient-to-b from-neutral-950 to-neutral-900">
         <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-4">The Opportunity</p>
+          <p className="text-xs font-bold tracking-widest text-neutral-500 mb-4">The Opportunity</p>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight">{app.opportunity.title}</h2>
           <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">{app.opportunity.body}</p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-5 gap-3">
@@ -239,7 +239,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">What's Included</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">What's Included</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">Everything to launch a real software business.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -263,7 +263,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24 bg-neutral-900/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Who This Is For</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Who This Is For</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">Built for operators who want to own, not rent.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -284,7 +284,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Business Model</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Business Model</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">How people use this platform.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -303,7 +303,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24 bg-gradient-to-b from-neutral-900 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Customization</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Customization</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">Every pixel is yours to brand.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -324,7 +324,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Social Proof</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Social Proof</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">Real operators. Real launches.</h2>
           </div>
 
@@ -332,7 +332,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             {app.metrics.map(m => (
               <div key={m.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center">
                 <div className="text-4xl font-black tracking-tight">{m.value}</div>
-                <div className="text-xs text-neutral-500 uppercase tracking-widest mt-2">{m.label}</div>
+                <div className="text-xs text-neutral-500 tracking-widest mt-2">{m.label}</div>
               </div>
             ))}
           </div>
@@ -361,7 +361,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
       <section className="border-t border-white/5 py-24 bg-neutral-900/50">
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">FAQ</p>
+            <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">FAQ</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">Common questions.</h2>
           </div>
           <Accordion type="single" collapsible className="w-full">
