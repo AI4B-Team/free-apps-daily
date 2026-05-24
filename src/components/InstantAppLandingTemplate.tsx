@@ -243,7 +243,11 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
         <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center">
           <p className="text-xs font-bold tracking-widest text-neutral-500 mb-4">The Opportunity</p>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight capitalize">{app.opportunity.title}</h2>
-          <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">{app.opportunity.body}</p>
+          <p className="mt-6 text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+            {splitTwoLines(app.opportunity.body).map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
+          </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-5 gap-3">
             {app.opportunity.points.map(p => (
               <div key={p} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 text-sm text-neutral-200">
