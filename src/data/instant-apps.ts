@@ -108,7 +108,7 @@ export const INSTANT_APPS: InstantApp[] = [
     accent: "from-indigo-500 to-purple-600",
     palette: ["bg-indigo-500", "bg-violet-500", "bg-sky-500", "bg-blue-500", "bg-cyan-500"],
     icon: Layers,
-    headline: "Own an AI CRM built for real estate investors",
+    headline: "Launch your own AI investor CRM",
     subheadline: "A complete white-label CRM you can launch under your brand and sell to investors, agents, and wholesalers in any market.",
     hero: {
       eyebrow: "AI CRM · Real Estate",
