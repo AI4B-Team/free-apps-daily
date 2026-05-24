@@ -103,11 +103,20 @@ function MockPhone({ accent }: { accent: string }) {
   );
 }
 
+const SOLID_MAP: Record<string, { bg: string; text: string }> = {
+  "from-red-500 to-orange-500":      { bg: "bg-red-500",     text: "text-red-500" },
+  "from-indigo-500 to-purple-600":   { bg: "bg-indigo-500",  text: "text-indigo-500" },
+  "from-emerald-500 to-teal-500":    { bg: "bg-emerald-500", text: "text-emerald-500" },
+};
+
 export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) {
   const Icon = app.icon;
+  const { bg: bgSolid, text: textSolid } = SOLID_MAP[app.accent] ?? { bg: "bg-neutral-900", text: "text-neutral-900" };
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white antialiased">
+
+
       {/* NAV */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-neutral-950/70 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
@@ -251,7 +260,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               const I = f.icon;
               return (
                 <div key={f.title} className="group rounded-2xl border border-neutral-200 bg-white hover:border-neutral-400 hover:shadow-lg p-6 transition-all">
-                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${app.accent} flex items-center justify-center mb-5 shadow-md`}>
+                  <div className={`w-11 h-11 rounded-xl ${bgSolid} flex items-center justify-center mb-5 shadow-md`}>
                     <I size={18} className="text-white" />
                   </div>
                   <h3 className="font-bold text-neutral-950 mb-1.5">{f.title}</h3>
@@ -276,7 +285,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               const I = AUDIENCE_ICONS[a] || Users;
               return (
                 <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <div className={`w-10 h-10 rounded-lg ${bgSolid} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
                     <I size={18} className="text-white" />
                   </div>
                   <div className="text-sm font-semibold text-neutral-200">{a}</div>
@@ -297,8 +306,8 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {app.businessModels.map((m, i) => (
               <div key={m.title} className="relative rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${app.accent}`} />
-                <div className={`text-xs font-mono font-bold mb-3 bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>0{i + 1}</div>
+                <div className={`absolute top-0 left-0 right-0 h-1 ${bgSolid}`} />
+                <div className={`text-xs font-mono font-bold mb-3 ${textSolid}`}>0{i + 1}</div>
                 <h3 className="font-bold text-neutral-950 mb-2">{m.title}</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">{m.desc}</p>
               </div>
@@ -320,7 +329,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
               const I = c.icon;
               return (
                 <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${app.accent} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <div className={`w-10 h-10 rounded-lg ${bgSolid} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
                     <I size={16} className="text-white" />
                   </div>
                   <div className="text-sm font-semibold text-neutral-200">{c.title}</div>
@@ -342,7 +351,7 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {app.metrics.map(m => (
               <div key={m.label} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center">
-                <div className={`text-4xl font-black tracking-tight bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>{m.value}</div>
+                <div className={`text-4xl font-black tracking-tight ${textSolid}`}>{m.value}</div>
                 <div className="text-xs text-neutral-500 tracking-widest mt-2">{m.label}</div>
               </div>
             ))}
