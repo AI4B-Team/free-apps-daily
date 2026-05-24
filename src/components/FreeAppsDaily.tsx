@@ -141,9 +141,9 @@ export default function FreeAppsDaily() {
 
       {/* ── Nav ── */}
       <nav className="flex items-center justify-between px-8 py-4 border-b border-neutral-100 bg-white sticky top-0 z-40 shadow-sm">
-        <div className="flex items-center gap-2.5">
-          <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
-          <span className="text-sm font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
+        <div className="flex items-center gap-3">
+          <div className="w-4 h-4 rounded-full bg-red-600 animate-pulse" />
+          <span className="text-2xl md:text-3xl font-black tracking-tight text-neutral-900">FreeAppsDaily</span>
         </div>
         <div className="flex items-center gap-6">
           <div className="relative hidden md:block" ref={industryRef}>
