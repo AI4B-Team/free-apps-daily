@@ -30,6 +30,8 @@ function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) 
     "RESELLABLE":  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
     "NEW":         "bg-sky-500/15 text-sky-300 border-sky-500/30",
     "OWNED":       "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30",
+    "VERIFIED":    "bg-sky-500/15 text-sky-300 border-sky-500/30",
+    "BRANDABLE":   "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
   };
   const cls = dark ? darkMap[kind] : BADGE_STYLES[kind];
   return (
