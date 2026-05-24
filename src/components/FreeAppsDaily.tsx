@@ -283,7 +283,16 @@ export default function FreeAppsDaily() {
           </div>
           <button
             onClick={() => setFilterOpen(o => !o)}
-            className="flex items-center gap-1.5 p-2 rounded-lg border border-neutral-200 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 hover:border-neutral-300 transition-colors"
+            className="hidden md:flex items-center gap-2 w-80 px-3 py-2 rounded-lg border border-neutral-200 text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50 hover:border-neutral-300 transition-colors"
+            aria-label="Search Apps"
+          >
+            {filterOpen ? <X size={15} /> : <Search size={15} />}
+            <span className="text-sm flex-1 text-left truncate">Search by app name, feature or use case</span>
+            <ChevronDown size={13} className={`transition-transform ${filterOpen ? "rotate-180" : ""}`} />
+          </button>
+          <button
+            onClick={() => setFilterOpen(o => !o)}
+            className="md:hidden flex items-center gap-1.5 p-2 rounded-lg border border-neutral-200 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 hover:border-neutral-300 transition-colors"
             aria-label="Search Apps"
           >
             {filterOpen ? <X size={17} /> : <Search size={17} />}
