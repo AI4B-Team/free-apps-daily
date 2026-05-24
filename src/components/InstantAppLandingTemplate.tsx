@@ -294,8 +294,9 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {app.businessModels.map((m, i) => (
-              <div key={m.title} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all">
-                <div className="text-xs font-mono text-neutral-500 mb-3">0{i + 1}</div>
+              <div key={m.title} className="relative rounded-2xl border border-neutral-200 bg-neutral-50 p-6 hover:border-neutral-400 hover:shadow-md transition-all overflow-hidden">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${app.accent}`} />
+                <div className={`text-xs font-mono font-bold mb-3 bg-gradient-to-r ${app.accent} bg-clip-text text-transparent`}>0{i + 1}</div>
                 <h3 className="font-bold text-neutral-950 mb-2">{m.title}</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">{m.desc}</p>
               </div>
