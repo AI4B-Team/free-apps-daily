@@ -364,17 +364,17 @@ export default function FreeAppsDaily() {
             onSubmit={handleSearch}
             className="bg-white border border-neutral-200 rounded-2xl p-3 shadow-2xl flex items-center gap-3"
           >
-            <div className="relative">
+            <div className="relative" ref={heroIndustryRef}>
               <button
                 type="button"
-                onClick={() => setIndustryOpen(o => !o)}
+                onClick={() => setHeroIndustryOpen(o => !o)}
                 className="flex items-center gap-2 text-sm text-neutral-700 font-medium border-r border-neutral-200 pr-4 py-1 hover:text-red-600 transition-colors min-w-max"
               >
                 <Filter size={14} className="text-neutral-400" />
                 {activeIndustry.label}
-                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={13} className={`text-neutral-400 transition-transform ${heroIndustryOpen ? "rotate-180" : ""}`} />
               </button>
-              {industryOpen && (
+              {heroIndustryOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-xl shadow-xl py-1.5 w-48 z-50">
                   {INDUSTRIES.map(ind => (
                     <button
