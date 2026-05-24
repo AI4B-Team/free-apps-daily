@@ -88,7 +88,7 @@ const OWNED_APPS = [
     tagline: "Your AI Content Empire — White Labeled",
     emoji: "⚡",
     desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
-    badges: ["OWNED", "RESELL"] as BadgeKind[],
+    badges: ["OWNED", "RESELLABLE"] as BadgeKind[],
     price: "From $2,997 one-time",
     margin: "Keep 100% of revenue",
     accent: "from-red-500 to-orange-500",
@@ -99,7 +99,7 @@ const OWNED_APPS = [
     tagline: "Sell Your Own AI CRM to Real Estate Investors",
     emoji: "🏠",
     desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
-    badges: ["OWNED", "RESELL"] as BadgeKind[],
+    badges: ["OWNED", "RESELLABLE"] as BadgeKind[],
     price: "From $4,997 one-time",
     margin: "Avg reseller MRR: $18K",
     accent: "from-indigo-500 to-purple-600",
@@ -677,13 +677,13 @@ export default function FreeAppsDaily() {
       <section className="relative bg-neutral-950 text-white overflow-hidden mt-14">
         <div className="relative max-w-6xl mx-auto px-8 py-20">
           <div className="text-center mb-14 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-neutral-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5">
+            <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5">
               <Rocket size={11} />
               For Founders, Operators & Agencies
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
               <span className="block whitespace-nowrap">Don't Just Use AI Apps.</span>
-              <span className="block whitespace-nowrap text-white">
+              <span className="block whitespace-nowrap text-amber-400">
                 Launch Your Own AI Business.
               </span>
             </h2>
