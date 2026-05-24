@@ -9,7 +9,7 @@ import {
   Rocket, Sparkles, Layers, DollarSign, Shield, CheckCircle2
 } from "lucide-react";
 
-type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED";
+type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED" | "VERIFIED" | "BRANDABLE";
 
 const BADGE_STYLES: Record<BadgeKind, string> = {
   "FREE TODAY":  "bg-red-50 text-red-600 border-red-200",
@@ -18,6 +18,8 @@ const BADGE_STYLES: Record<BadgeKind, string> = {
   "RESELLABLE":  "bg-emerald-50 text-emerald-700 border-emerald-200",
   "NEW":         "bg-sky-50 text-sky-700 border-sky-200",
   "OWNED":       "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+  "VERIFIED":    "bg-sky-50 text-sky-700 border-sky-200",
+  "BRANDABLE":   "bg-indigo-50 text-indigo-700 border-indigo-200",
 };
 
 function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) {
@@ -28,6 +30,8 @@ function TypeBadge({ kind, dark = false }: { kind: BadgeKind; dark?: boolean }) 
     "RESELLABLE":  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
     "NEW":         "bg-sky-500/15 text-sky-300 border-sky-500/30",
     "OWNED":       "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30",
+    "VERIFIED":    "bg-sky-500/15 text-sky-300 border-sky-500/30",
+    "BRANDABLE":   "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
   };
   const cls = dark ? darkMap[kind] : BADGE_STYLES[kind];
   return (
@@ -82,41 +86,10 @@ const TRUST_LOGOS = [
   { name: "Webflow",    domain: "webflow.com" },
 ];
 
-const OWNED_APPS = [
-  {
-    name: "REVVEN",
-    tagline: "Your AI Content Empire — White Labeled",
-    emoji: "⚡",
-    desc: "Launch your own AI content + brand automation SaaS in days, not years. Full source code, your logo, your pricing, your customers.",
-    badges: ["RESELLABLE"] as BadgeKind[],
-    price: "Starts At $2,997",
-    ownership: "Full Resell Rights Included",
-    accent: "from-red-500 to-orange-500",
-    icon: Sparkles,
-  },
-  {
-    name: "Real Elite",
-    tagline: "Sell Your Own AI CRM to Real Estate Investors",
-    emoji: "🏠",
-    desc: "A turnkey AI investor CRM you can resell at $97–$497/mo. Lead scoring, deal analysis, bulk offers — all under your brand.",
-    badges: ["RESELLABLE"] as BadgeKind[],
-    price: "Starts At $4,997",
-    ownership: "Launch Under Your Brand",
-    accent: "from-indigo-500 to-purple-600",
-    icon: Layers,
-  },
-  {
-    name: "HomesDaily",
-    tagline: "Your Own AI Real Estate Marketplace",
-    emoji: "🏡",
-    desc: "Launch a fully-branded off-market property platform. AI matches buyers to deals, you collect the listing fees and lead-gen revenue.",
-    badges: ["RESELLABLE", "STAFF PICK"] as BadgeKind[],
-    price: "Starts At $3,497",
-    ownership: "Own Your Customer Base",
-    accent: "from-emerald-500 to-teal-500",
-    icon: Rocket,
-  },
-];
+import { INSTANT_APPS } from "@/data/instant-apps";
+import { Link } from "@tanstack/react-router";
+const OWNED_APPS = INSTANT_APPS;
+
 
 // Live app shape mapped from the server (field names match the previous hardcoded shape)
 type App = {
@@ -737,7 +710,9 @@ export default function FreeAppsDaily() {
             {OWNED_APPS.map(app => {
               const Icon = app.icon;
               return (
-                <div
+                <Link
+                  to="/instant-apps/$slug"
+                  params={{ slug: app.slug }}
                   key={app.name}
                   className="group relative bg-white/[0.04] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1"
                 >
@@ -768,10 +743,10 @@ export default function FreeAppsDaily() {
                   </div>
 
 
-                  <button className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
+                  <span className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 group-hover:bg-neutral-200 transition-colors">
                     Get Licensing Details <ArrowRight size={14} />
-                  </button>
-                </div>
+                  </span>
+                </Link>
               );
             })}
           </div>
