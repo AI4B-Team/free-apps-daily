@@ -147,6 +147,7 @@ export const INSTANT_APPS: InstantApp[] = [
     price: "Starts At $3,497",
     ownership: "Own Your Customer Base",
     accent: "from-emerald-500 to-teal-500",
+    palette: ["bg-emerald-500", "bg-teal-500", "bg-lime-500", "bg-green-600", "bg-cyan-600"],
     icon: Rocket,
     headline: "Launch your own AI real estate marketplace",
     subheadline: "Own a branded off-market property platform where AI matches buyers to deals — and you collect every listing and lead-gen fee.",
