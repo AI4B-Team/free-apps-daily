@@ -620,9 +620,9 @@ export default function FreeAppsDaily() {
                     </div>
                   </div>
                   <p className="text-xs text-neutral-500 leading-relaxed mb-3 flex-1">{app.desc}</p>
-                  <div className="flex gap-1.5 mb-3 flex-wrap">
-                    <span className="text-xs border border-red-200 bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-medium">{app.offer}</span>
-                    {app.value > 0 && <span className="text-xs border border-neutral-200 bg-neutral-50 text-neutral-400 px-2 py-0.5 rounded-full">${app.value}/mo value</span>}
+                  <div className="flex gap-1 mb-3 flex-wrap">
+                    {app.badges.map(b => <TypeBadge key={b} kind={b} />)}
+                    {app.value > 0 && <span className="text-[10px] border border-neutral-200 bg-neutral-50 text-neutral-400 px-2 py-0.5 rounded-full">${app.value}/mo value</span>}
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     {isUnlocked(app.id) ? (
