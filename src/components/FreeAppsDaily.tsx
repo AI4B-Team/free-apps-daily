@@ -235,7 +235,7 @@ export default function FreeAppsDaily() {
 
               <h1 className="text-5xl font-black leading-[1.08] text-neutral-900 mb-5 tracking-tight">
                 The Best AI Apps.<br />
-                <span className="text-red-600">Free.</span> Every Day.
+                <span className="text-red-600">Free. Every Day.</span>
               </h1>
 
               <p className="text-base text-neutral-500 leading-relaxed mb-8 max-w-md">
