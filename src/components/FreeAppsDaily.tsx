@@ -369,10 +369,8 @@ export default function FreeAppsDaily() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             <div>
-              <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full mb-6">
-                <Zap size={11} className="fill-red-600" />
-                {APPS.length} Free AI Apps Available Today
-              </div>
+              <RotatingHeroBadge appsCount={APPS.length} />
+
 
               <h1 className="text-5xl font-black leading-[1.08] text-neutral-900 mb-5 tracking-tight">
                 The Best AI Apps.<br />
