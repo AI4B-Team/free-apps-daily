@@ -675,18 +675,15 @@ export default function FreeAppsDaily() {
 
       {/* ── LAUNCH YOUR OWN AI BUSINESS (Premium Dark) ── */}
       <section className="relative bg-neutral-950 text-white overflow-hidden mt-14">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.15),transparent_60%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(99,102,241,0.18),transparent_55%)] pointer-events-none" />
-
         <div className="relative max-w-6xl mx-auto px-8 py-20">
           <div className="text-center mb-14 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-red-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 backdrop-blur">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-neutral-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5">
               <Rocket size={11} />
               For Founders, Operators & Agencies
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 leading-[1.05]">
               <span className="block whitespace-nowrap">Don't Just Use AI Apps.</span>
-              <span className="block whitespace-nowrap bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+              <span className="block whitespace-nowrap text-white">
                 Launch Your Own AI Business.
               </span>
             </h2>
@@ -702,12 +699,10 @@ export default function FreeAppsDaily() {
               return (
                 <div
                   key={app.name}
-                  className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-500/10 backdrop-blur-sm"
+                  className="group relative bg-white/[0.04] border border-white/10 hover:border-white/25 rounded-2xl p-6 flex flex-col transition-all hover:-translate-y-1"
                 >
-                  <div className={`absolute -top-px left-6 right-6 h-px bg-gradient-to-r ${app.accent} opacity-60`} />
-
                   <div className="flex items-start justify-between mb-5">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.accent} flex items-center justify-center shadow-lg`}>
+                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
                       <Icon size={24} className="text-white" />
                     </div>
                     <span className="text-3xl">{app.emoji}</span>
@@ -723,18 +718,18 @@ export default function FreeAppsDaily() {
 
                   <div className="border-t border-white/10 pt-4 space-y-2 mb-5">
                     <div className="flex items-center gap-2 text-xs">
-                      <DollarSign size={12} className="text-emerald-400" />
+                      <DollarSign size={12} className="text-neutral-400" />
                       <span className="text-neutral-400">License:</span>
                       <span className="font-bold text-white">{app.price}</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <TrendingUp size={12} className="text-emerald-400" />
+                      <TrendingUp size={12} className="text-neutral-400" />
                       <span className="text-neutral-400">Upside:</span>
                       <span className="font-bold text-white">{app.margin}</span>
                     </div>
                   </div>
 
-                  <button className={`w-full bg-gradient-to-r ${app.accent} text-white text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg`}>
+                  <button className="w-full bg-white text-neutral-950 text-sm font-black py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
                     Get Licensing Details <ArrowRight size={14} />
                   </button>
                 </div>
