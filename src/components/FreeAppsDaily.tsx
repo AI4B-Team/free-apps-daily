@@ -6,7 +6,7 @@ import {
   Search, X, Lock, Unlock, Check, Flame, Star,
   ArrowRight, Clock, Crown, Mail, Bell, Zap,
   Filter, ChevronDown, TrendingUp, Users, Gift,
-  Rocket, Sparkles, Layers, DollarSign, Shield
+  Rocket, Sparkles, Layers, DollarSign, Shield, CheckCircle2
 } from "lucide-react";
 
 type BadgeKind = "FREE TODAY" | "STAFF PICK" | "RESELL" | "RESELLABLE" | "NEW" | "OWNED";
