@@ -298,15 +298,15 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
             <p className="text-xs font-bold tracking-widest text-neutral-500 mb-3">Who This Is For</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight capitalize">Built for operators who want to own, not rent.</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {app.audience.map((a, idx) => {
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {app.audience.map((a) => {
               const I = AUDIENCE_ICONS[a] || Users;
               return (
-                <div key={a} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center hover:border-white/30 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${ICON_PALETTE[idx % ICON_PALETTE.length]} flex items-center justify-center mx-auto mb-3 shadow-lg`}>
-                    <I size={18} className="text-white" />
+                <div key={a} className="flex flex-col items-center text-center gap-3 group">
+                  <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.03] transition-colors">
+                    <I size={20} className="text-neutral-300" strokeWidth={1.5} />
                   </div>
-                  <div className="text-sm font-semibold text-neutral-200">{a}</div>
+                  <div className="text-sm font-medium text-neutral-300">{a}</div>
                 </div>
               );
             })}
