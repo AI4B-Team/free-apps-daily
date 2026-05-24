@@ -152,8 +152,10 @@ export default function InstantAppLandingTemplate({ app }: { app: InstantApp }) 
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.02] max-w-4xl mx-auto capitalize">
             {app.headline}
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            {app.subheadline}
+          <p className="mt-6 text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+            {splitTwoLines(app.subheadline).map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
